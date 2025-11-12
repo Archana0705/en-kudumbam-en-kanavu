@@ -122,8 +122,9 @@
           </a>
 
           <a href="#" class="text-white text-none px-2 font-15 w-75">
-            <b> <span class="txt-orange d-block">என் குடும்பம்</span>
-              <small class="waviy">
+            <b> <span class="txt-orange d-block">மாநில குடும்பத்
+                தரவு</span>
+              <!-- <small class="waviy">
                 <span style="--i:1">எ</span>
                 <span style="--i:2">ன்</span>
                 <span style="--i:3"></span>
@@ -135,7 +136,9 @@
                 <span style="--i:8">0</span>
                 <span style="--i:9">3</span>
                 <span style="--i:10">0</span>
-              </small>
+              </small> -->
+              <span class="d-block font10 mild-color">சரிபார்த்தல் மற்றும்
+                உறுதிப்படுத்துதல்</span>
             </b>
           </a>
           <a data-bs-toggle="offcanvas" data-bs-target=".logout"
@@ -149,6 +152,66 @@
   <!-- Begin page content -->
   <main class="flex-shrink-0 h-100 main-space">
     <div class="container-fluid box-layout">
+      <div class="float-end">
+        <a href="javascript:void(0);" id="manualEntryBtn">
+          <span class="btn btn-outline-primary btn-sm rounded-pill mb-1">
+            <i class="bi bi-person-check-fill"></i>புதிய பதிவு (Manual Entry)
+          </span>
+        </a>
+      </div>
+      <div class="col-lg-12">
+        <div id="manualOptions" class="mt-1" style="display:none;">
+          <label class="form-label fw-semibold small text-muted">
+            கையேடு பதிவு விருப்பம் (Manual Entry Type)
+          </label>
+
+          <div class="d-flex gap-2 mb-3 justify-content-between text-center plan-options">
+            <!-- With Ration Card -->
+            <button type="button" class="btn flex-fill rounded-4 option-btn py-3 btn-success text-white"
+              data-value="with" id="withCardBtn">
+              <i class="bi bi-credit-card-2-front-fill fs-4 d-block mb-1"></i>
+              <span class="fw-semibold small">ரேஷன் கார்டு உடன்</span>
+            </button>
+
+            <!-- Without Ration Card -->
+            <button type="button" class="btn flex-fill rounded-4 option-btn py-3 btn-outline-primary"
+              data-value="without" id="withoutCardBtn">
+              <i class="bi bi-card-text fs-4 d-block mb-1"></i>
+              <span class="fw-semibold small">ரேஷன் கார்டு இல்லாமல்</span>
+            </button>
+          </div>
+
+          <!-- Step 3: Ration Card Validation -->
+          <div id="rationCardSection" class="border rounded-3 p-3 mt-3 bg-light" style="display:none;">
+            <label for="ufcInput" class="form-label small text-muted mb-1">
+              UFC / ரேஷன் கார்டு எண்
+            </label>
+            <div class="input-group">
+              <input type="text" id="ufcInput" class="form-control form-control-sm" placeholder="UFC எண்ணை உள்ளிடவும்"
+                maxlength="12">
+              <button class="btn btn-outline-primary btn-sm" id="verifyBtn" type="button">
+                <i class="bi bi-check-circle"></i> Verify
+              </button>
+            </div>
+            <div id="ufcErrorMsg" class="text-danger small mt-2" style="display:none;">
+              12 இலக்க UFC எண்ணை சரியாக உள்ளிடவும்.
+            </div>
+            <div id="ufcSuccessMsg" class="text-success small mt-2" style="display:none;">
+              ✅ UFC எண் சரியாக உள்ளது. தொடரப்படுகிறது...
+            </div>
+
+            <!-- Toast element -->
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+              <div id="ackToast" class="toast bg-success text-white" role="alert" aria-live="assertive"
+                aria-atomic="true">
+                <div class="toast-body" id="ackMessage"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <div class="col-lg-12 searchbox mt-2">
         <div class="input-group mb-2">
           <span class="input-group-text" id="basic-addon1" style="font-size: 10px;"><i class="bi bi-search"></i></span>
@@ -156,6 +219,7 @@
             aria-describedby="basic-addon1" id="itemSearch">
         </div>
       </div>
+
       <div class="alert alert-danger d-none" id="error_div" role="alert">எந்த விவரமும் கிடைக்கவில்லை!</div>
       <select class="form-select mb-2" aria-label="Default select example" id="user_ration" name="user_ration"
         onchange="get_pds_shop_code_list_by_vao(this.value)">
@@ -604,6 +668,59 @@
       });
     }
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const ufcInput = document.getElementById("ufcInput");
+      const verifyBtn = document.getElementById("verifyBtn");
+      const errorMsg = document.getElementById("ufcErrorMsg");
+      const successMsg = document.getElementById("ufcSuccessMsg");
+
+      // ✅ Reset when navigating back or reloading
+      window.addEventListener("pageshow", function () {
+        resetFields();
+      });
+
+      function resetFields() {
+        ufcInput.value = "";
+        errorMsg.style.display = "none";
+        successMsg.style.display = "none";
+        ufcInput.classList.remove("is-invalid");
+      }
+
+      // ✅ Verify UFC number
+      verifyBtn.addEventListener("click", function () {
+        const ufcValue = ufcInput.value.trim();
+
+        if (!/^\d{12}$/.test(ufcValue)) {
+          errorMsg.style.display = "block";
+          successMsg.style.display = "none";
+          ufcInput.classList.add("is-invalid");
+          return;
+        }
+
+        errorMsg.style.display = "none";
+        successMsg.style.display = "block";
+        ufcInput.classList.remove("is-invalid");
+
+        // ✅ Show toast
+        const ackMessage = document.getElementById("ackMessage");
+        ackMessage.innerHTML = `
+        <i class="bi bi-check-circle-fill me-1"></i>
+        <strong>UFC Verified Successfully!</strong>
+      `;
+
+        const toastEl = document.getElementById("ackToast");
+        const toast = new bootstrap.Toast(toastEl, { delay: 1000 });
+        toast.show();
+
+        // ✅ Navigate after toast (1 sec)
+        setTimeout(() => {
+          window.location.href = "user.html";
+        }, 1000);
+      });
+    });
+  </script>
+
 
 </body>
 
