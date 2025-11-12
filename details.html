@@ -167,8 +167,14 @@
 
           <div class="d-flex gap-2 mb-3 justify-content-between text-center plan-options">
             <!-- With Ration Card -->
-            <button type="button" class="btn flex-fill rounded-4 option-btn py-3 btn-success text-white"
+            <!-- <button type="button" class="btn flex-fill rounded-4 option-btn py-3 btn-success text-white"
               data-value="with" id="withCardBtn">
+              <i class="bi bi-credit-card-2-front-fill fs-4 d-block mb-1"></i>
+              <span class="fw-semibold small">ரேஷன் கார்டு உடன்</span>
+            </button> -->
+
+            <button type="button" class="btn flex-fill rounded-4 option-btn py-3 btn-outline-primary" data-value=""
+              id="withCardBtn">
               <i class="bi bi-credit-card-2-front-fill fs-4 d-block mb-1"></i>
               <span class="fw-semibold small">ரேஷன் கார்டு உடன்</span>
             </button>
@@ -189,23 +195,13 @@
             <div class="input-group">
               <input type="text" id="ufcInput" class="form-control form-control-sm" placeholder="UFC எண்ணை உள்ளிடவும்"
                 maxlength="12">
-              <button class="btn btn-outline-primary btn-sm" id="verifyBtn" type="button">
-                <i class="bi bi-check-circle"></i> Verify
-              </button>
+              <button class="btn btn-outline-primary btn-sm" id="verifyBtn" type="button">Verify</button>
             </div>
             <div id="ufcErrorMsg" class="text-danger small mt-2" style="display:none;">
               12 இலக்க UFC எண்ணை சரியாக உள்ளிடவும்.
             </div>
             <div id="ufcSuccessMsg" class="text-success small mt-2" style="display:none;">
               ✅ UFC எண் சரியாக உள்ளது. தொடரப்படுகிறது...
-            </div>
-
-            <!-- Toast element -->
-            <div class="toast-container position-fixed bottom-0 end-0 p-3">
-              <div id="ackToast" class="toast bg-success text-white" role="alert" aria-live="assertive"
-                aria-atomic="true">
-                <div class="toast-body" id="ackMessage"></div>
-              </div>
             </div>
           </div>
         </div>
@@ -668,29 +664,97 @@
       });
     }
   </script>
+
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const manualBtn = document.getElementById("manualEntryBtn");
+      const manualOptions = document.getElementById("manualOptions");
+      const withCardBtn = document.getElementById("withCardBtn");
+      const withoutCardBtn = document.getElementById("withoutCardBtn");
+      const rationCardSection = document.getElementById("rationCardSection");
+
+      // Toggle visibility of manual options when button is clicked
+      manualBtn.addEventListener("click", function () {
+        if (manualOptions.style.display === "none" || manualOptions.style.display === "") {
+          manualOptions.style.display = "block";
+        } else {
+          manualOptions.style.display = "none";
+          rationCardSection.style.display = "none";
+        }
+      });
+
+      // Handle "With Ration Card" button
+      withCardBtn.addEventListener("click", function () {
+        rationCardSection.style.display = "block";
+        toggleButtonStyles(withCardBtn, withoutCardBtn);
+      });
+
+      // Handle "Without Ration Card" button
+      withoutCardBtn.addEventListener("click", function () {
+        rationCardSection.style.display = "none";
+        toggleButtonStyles(withoutCardBtn, withCardBtn);
+      });
+
+      // Function to switch active button styles
+      function toggleButtonStyles(activeBtn, inactiveBtn) {
+        activeBtn.classList.remove("btn-outline-primary");
+        activeBtn.classList.add("btn-success", "text-white");
+
+        inactiveBtn.classList.remove("btn-success", "text-white");
+        inactiveBtn.classList.add("btn-outline-primary");
+      }
+    });
+  </script>
+ -->
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      const manualBtn = document.getElementById("manualEntryBtn");
+      const manualOptions = document.getElementById("manualOptions");
+      const withCardBtn = document.getElementById("withCardBtn");
+      const withoutCardBtn = document.getElementById("withoutCardBtn");
+      const rationCardSection = document.getElementById("rationCardSection");
+
       const ufcInput = document.getElementById("ufcInput");
       const verifyBtn = document.getElementById("verifyBtn");
       const errorMsg = document.getElementById("ufcErrorMsg");
       const successMsg = document.getElementById("ufcSuccessMsg");
 
-      // ✅ Reset when navigating back or reloading
-      window.addEventListener("pageshow", function () {
-        resetFields();
+      // 🔹 Page to navigate when "Without Ration Card" is selected
+      const withoutCardRedirectUrl = "manualentry.html"; // 👈 change if needed
+
+      // ✅ Toggle visibility of manual options
+      manualBtn.addEventListener("click", function () {
+        if (manualOptions.style.display === "none" || manualOptions.style.display === "") {
+          manualOptions.style.display = "block";
+        } else {
+          manualOptions.style.display = "none";
+          rationCardSection.style.display = "none";
+        }
       });
 
-      function resetFields() {
-        ufcInput.value = "";
-        errorMsg.style.display = "none";
-        successMsg.style.display = "none";
-        ufcInput.classList.remove("is-invalid");
-      }
+      // ✅ Handle "With Ration Card" button
+      withCardBtn.addEventListener("click", function () {
+        rationCardSection.style.display = "block";
+        toggleButtonStyles(withCardBtn, withoutCardBtn);
+      });
 
-      // ✅ Verify UFC number
+      // ✅ Handle "Without Ration Card" button (added navigation)
+      withoutCardBtn.addEventListener("click", function () {
+        rationCardSection.style.display = "none";
+        toggleButtonStyles(withoutCardBtn, withCardBtn);
+
+        // 🔸 Navigate to another page after short delay
+        setTimeout(() => {
+          window.location.href = withoutCardRedirectUrl;
+        }, 300);
+      });
+
+      // ✅ Verify button click
       verifyBtn.addEventListener("click", function () {
         const ufcValue = ufcInput.value.trim();
 
+        // 🔸 Validate 12-digit number
         if (!/^\d{12}$/.test(ufcValue)) {
           errorMsg.style.display = "block";
           successMsg.style.display = "none";
@@ -698,29 +762,38 @@
           return;
         }
 
+        // ✅ Success UI
         errorMsg.style.display = "none";
-        successMsg.style.display = "block";
         ufcInput.classList.remove("is-invalid");
+        successMsg.style.display = "block";
 
-        // ✅ Show toast
+        // ✅ Optional Bootstrap toast feedback
+        const toastEl = document.getElementById("ackToast");
         const ackMessage = document.getElementById("ackMessage");
-        ackMessage.innerHTML = `
+        if (toastEl && ackMessage) {
+          ackMessage.innerHTML = `
         <i class="bi bi-check-circle-fill me-1"></i>
         <strong>UFC Verified Successfully!</strong>
       `;
+          const toast = new bootstrap.Toast(toastEl, { delay: 2000 });
+          toast.show();
+        }
 
-        const toastEl = document.getElementById("ackToast");
-        const toast = new bootstrap.Toast(toastEl, { delay: 1000 });
-        toast.show();
-
-        // ✅ Navigate after toast (1 sec)
+        // ✅ Redirect after a short delay
         setTimeout(() => {
-          window.location.href = "user.html";
+          window.location.href = 'manualentry.html';
         }, 1000);
       });
+
+      // ✅ Helper: Button style toggle
+      function toggleButtonStyles(activeBtn, inactiveBtn) {
+        activeBtn.classList.remove("btn-outline-primary");
+        activeBtn.classList.add("btn-success", "text-white");
+        inactiveBtn.classList.remove("btn-success", "text-white");
+        inactiveBtn.classList.add("btn-outline-primary");
+      }
     });
   </script>
-
 
 </body>
 
