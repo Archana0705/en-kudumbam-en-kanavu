@@ -1,143 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
-      <!-- Bootstrap CSS -->
-      <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-      <!-- font awesome CSS -->
-      <link rel="stylesheet" type="text/css" href="assets/bootstrap-icons/bootstrap-icons.css"> 
-      <!-- general CSS --> 
-      <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
-      <title id="application_title">என் குடும்பம் - என் கனவு 
-2030 - Tamil Nadu</title>
-      <style>
-         .font17 {
-                font-size: 17px;
-         }
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
+   <!-- Bootstrap CSS -->
+   <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+   <!-- font awesome CSS -->
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-icons/bootstrap-icons.css">
+   <!-- general CSS -->
+   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+   <title id="application_title">மாநில குடும்பத் தரவு - சரிபார்த்தல் மற்றும் உறுதிப்படுத்துதல்</title>
+   <style>
+      .font17 {
+         font-size: 17px;
+      }
+
       /* Chrome * Safari */
       input[type="number"]::-webkit-inner-spin-button {
          display: none;
       }
+
       /* Firefox */
       input[type="number"] {
          -moz-appearance: textfield;
       }
+
       .blinkAlert {
-          position: fixed;
-          z-index: 9;
-          bottom: 0;
-          width: 100%;
-          text-align: center; 
-          border-radius: 0;
-          animation: pulseone 1500ms infinite;
-          width: 100%;
+         position: fixed;
+         z-index: 9;
+         bottom: 0;
+         width: 100%;
+         text-align: center;
+         border-radius: 0;
+         animation: pulseone 1500ms infinite;
+         width: 100%;
       }
-      @keyframes pulseone{
-          0%{
-              box-shadow: #ff0000 0 0 0 0;
-          }
-          75%{
-              box-shadow:#ff69b400 0 0 0 16px;
-          }
+
+      @keyframes pulseone {
+         0% {
+            box-shadow: #ff0000 0 0 0 0;
+         }
+
+         75% {
+            box-shadow: #ff69b400 0 0 0 16px;
+         }
       }
 
       .blinkAlert1 {
-          position: fixed;
-          z-index: 9;
-          top: 1rem;
-          width: 100%;
-          text-align: center; 
-          border-radius: 0;
-          animation: pulseone 1500ms infinite;
-          width: 100%;
+         position: fixed;
+         z-index: 9;
+         top: 1rem;
+         width: 100%;
+         text-align: center;
+         border-radius: 0;
+         animation: pulseone 1500ms infinite;
+         width: 100%;
       }
-      @keyframes pulseone{
-          0%{
-              box-shadow: #ff0000 0 0 0 0;
-          }
-          75%{
-              box-shadow:#ff69b400 0 0 0 16px;
-          }
+
+      @keyframes pulseone {
+         0% {
+            box-shadow: #ff0000 0 0 0 0;
+         }
+
+         75% {
+            box-shadow: #ff69b400 0 0 0 16px;
+         }
       }
    </style>
- 
-   </head>
-   <body class="d-flex flex-column h-100 bg-login">
 
-      <div id="preloader" style="display:none"></div>
-      <!-- Begin page content -->
-      <main class="flex-shrink-0 h-100 login-pg v-center">
-         
-         <div class="area">
-            <ul class="circles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-            </ul>
+</head>
+
+<body class="d-flex flex-column h-100 bg-login">
+
+   <div id="preloader" style="display:none"></div>
+   <!-- Begin page content -->
+   <main class="flex-shrink-0 h-100 login-pg v-center">
+
+      <div class="area">
+         <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+         </ul>
+      </div>
+
+
+      <div class="container-fluid bg-signup">
+         <div class="col-lg-12 text-center">
+            <img src="assets/img/logo.png" class="img-fluid logoimg" alt="logo">
          </div>
+         <div class="col-lg-12 text-center mb-2 mt-1">
 
 
-         <div class="container-fluid bg-signup">
-             <div class="col-lg-12 text-center">
-               <img src="assets/img/logo.png" class="img-fluid logoimg" alt="logo">
-            </div> 
-            <div class="col-lg-12 text-center mb-2 mt-1">   
 
-         
-
-               <p class="text-white otp-txt-signup mb-4 font17"><span class="txt-orange font-600">என் குடும்பம்</span><span class="d-block font-600 mild-color"> என் கனவு 2030</span><span class="d-block" id="application_name"></span></p>
-            </div>  
-            <div class="col-lg-12 text-center">  
-               <div class="card bg-light-dark">
-                 <div class="card-body half-card">
-                  <div class="input-group mb-2"> 
-                    <span class="input-group-text">
-                     <i class="bi bi-person-check boxicon"></i>
-                  </span>
-                    <input type="number" class="form-control custom-placeholder" placeholder="Mobile Number" aria-label="username" aria-describedby="user" id="mobile_number" autocomplete="off" onKeyPress="if(this.value.length==10) return false;">
-                  </div> 
-                  <div class="input-group mb-2 d-none"> 
-                    <span class="input-group-text">
-                     <i class="bi bi-lock boxicon"></i>
-                  </span>
-                    <input type="password" class="form-control" placeholder="Password" aria-label="password" aria-describedby="password">
+            <p class="text-white otp-txt-signup mb-4 font17"><span class="txt-orange font-600">மாநில குடும்பத்
+                  தரவு</span><span class="d-block font-600 mild-color">சரிபார்த்தல் மற்றும்
+                  உறுதிப்படுத்துதல்</span><span class="d-block" id="application_name"></span></p>
+         </div>
+         <div class="col-lg-12 text-center">
+            <div class="card bg-light-dark">
+               <div class="card-body half-card">
+                  <div class="input-group mb-2">
+                     <span class="input-group-text">
+                        <i class="bi bi-person-check boxicon"></i>
+                     </span>
+                     <input type="number" class="form-control custom-placeholder" placeholder="Mobile Number"
+                        aria-label="username" aria-describedby="user" id="mobile_number" autocomplete="off"
+                        onKeyPress="if(this.value.length==10) return false;">
+                  </div>
+                  <div class="input-group mb-2 d-none">
+                     <span class="input-group-text">
+                        <i class="bi bi-lock boxicon"></i>
+                     </span>
+                     <input type="password" class="form-control" placeholder="Password" aria-label="password"
+                        aria-describedby="password">
                   </div>
 
                   <div class="clear-both"></div>
                   <div class="mb-2 mt-3">
-                     <a href="otp.html" class="text-white btn btn-success btn-md" onclick="registerUser()">
-                        <i class="bi bi-arrow-right-circle"></i> <span class="px-1" >Sign In</span>
-                     </a> 
+                     <a href="consent.html" class="text-white btn btn-success btn-md" onclick="registerUser()">
+                        <i class="bi bi-arrow-right-circle"></i> <span class="px-1">Sign In</span>
+                     </a>
                   </div>
 
-                 </div> 
                </div>
             </div>
          </div>
-         <div class="alert alert-danger blinkAlert blink py-2 d-none" role="alert">
-             <b>It is NOT FOR TRAINING</b>
-         </div>
-         <div class="alert alert-danger blinkAlert1 blink py-2 d-none" role="alert">
-             <b>கள ஆய்வு செயலி</b>
-         </div>
-      </main>
-      <div id="snackbar"><i class="bi bi-check2-circle"></i><span id="snackbar_message"></span></div>
-      <div id="error_snackbar"><i class="bi bi-check2-circle"></i> <span id="error_snackbar_message">Please fill all the
-            fields</span>
       </div>
-      <!-- ==================================================== -->
+      <div class="alert alert-danger blinkAlert blink py-2 d-none" role="alert">
+         <b>It is NOT FOR TRAINING</b>
+      </div>
+      <div class="alert alert-danger blinkAlert1 blink py-2 d-none" role="alert">
+         <b>கள ஆய்வு செயலி</b>
+      </div>
+   </main>
+   <div id="snackbar"><i class="bi bi-check2-circle"></i><span id="snackbar_message"></span></div>
+   <div id="error_snackbar"><i class="bi bi-check2-circle"></i> <span id="error_snackbar_message">Please fill all the
+         fields</span>
+   </div>
+   <!-- ==================================================== -->
 
-       <!-- jQuery -->
-      <script src="assets/scripts/jquery/jquery.min.js"></script> 
-      <!-- Bootstrap Bundle with Popper --> 
-      <script src="assets/scripts/bootstrap/bootstrap.bundle.min.js"></script>
-      <!-- <script src="assets/scripts/global.js"></script> -->
-      <!-- <script type="text/javascript">
+   <!-- jQuery -->
+   <script src="assets/scripts/jquery/jquery.min.js"></script>
+   <!-- Bootstrap Bundle with Popper -->
+   <script src="assets/scripts/bootstrap/bootstrap.bundle.min.js"></script>
+   <!-- <script src="assets/scripts/global.js"></script> -->
+   <!-- <script type="text/javascript">
          var application_path;
          var application_name;
          var dept_master_id;//to assign dept id to enable filter
@@ -216,5 +229,6 @@
         }
       });
       </script> -->
-   </body>
+</body>
+
 </html>

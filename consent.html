@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
+   <!-- Bootstrap CSS -->
+   <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+   <!-- font awesome CSS -->
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-icons/bootstrap-icons.css">
+   <!-- general CSS -->
+   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+   <title id="application_title">மாநில குடும்பத் தரவு - சரிபார்த்தல் மற்றும் உறுதிப்படுத்துதல்</title>
+   <style>
+      .font20 {
+         font-size: 20px !important;
+      }
+
+      .font15 {
+         font-size: 15px !important;
+      }
+
+      /* Chrome * Safari */
+      input[type="number"]::-webkit-inner-spin-button {
+         display: none;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+         -moz-appearance: textfield;
+      }
+
+      .blinkAlert {
+         /*          position: fixed;*/
+         z-index: 9;
+         /*          bottom: 0;*/
+         width: 100%;
+         text-align: center;
+         border-radius: 0;
+         animation: pulseone 1500ms infinite;
+         width: 100%;
+      }
+
+      @keyframes pulseone {
+         0% {
+            box-shadow: #ff0000 0 0 0 0;
+         }
+
+         75% {
+            box-shadow: #ff69b400 0 0 0 16px;
+         }
+      }
+
+      .blinkAlert1 {
+         /*          position: fixed;*/
+         z-index: 9;
+         /*          top: 1rem;*/
+         width: 100%;
+         text-align: center;
+         border-radius: 0;
+         animation: pulseone1 1500ms infinite;
+         width: 100%;
+      }
+
+      @keyframes pulseone1 {
+         0% {
+            /*              box-shadow: #ff0000 0 0 0 0;*/
+            box-shadow: #00ff9e 0 0 0 0;
+         }
+
+         75% {
+            box-shadow: #ff69b400 0 0 0 16px;
+         }
+      }
+   </style>
+
+</head>
+
+<body class="d-flex flex-column h-100 bg-login">
+   <div id="preloader" style="display:none"></div>
+   <!-- Begin page content -->
+   <main class="flex-shrink-0 h-100 login-pg v-center">
+      <div class="area">
+         <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+         </ul>
+      </div>
+      <div class="container-fluid bg-signup otp-wrap">
+
+
+         <!-- <div class="col-lg-12">
+             <div class="alert alert-success blinkAlert1 blink py-1"  role="alert">
+               <b>கள ஆய்வு செயலி</b>
+            </div>
+         </div> -->
+
+
+         <div class="col-lg-12 text-center">
+            <img src="assets/img/logo.png" class="img-fluid logoimg" alt="logo">
+         </div>
+         <div class="col-lg-12 text-center mb-2 mt-1">
+
+            <p class="text-white otp-txt-signup mb-4 font17"><span class="txt-orange font-600">மாநில குடும்பத்
+                  தரவு</span><span class="d-block font-600 mild-color">சரிபார்த்தல் மற்றும்
+                  உறுதிப்படுத்துதல்</span><span class="d-block" id="application_name"></span></p>
+         </div>
+
+         <div class="col-lg-12">
+
+            <div class="logo-section">
+               <h2 class="otp-txt font20">ஒப்புகை (Consent)</h2>
+
+            </div>
+
+            <div class="form-check mt-3 font15">
+               <input class="form-check-input" type="checkbox" id="consentCheck" style="margin-top: 4px;">
+               <label class="form-check-label text-justify" for="consentCheck" style="line-height:1.6;">
+                  உள்நுழைவதன் மூலம், அடையாளம் உறுதிப்படுத்தல் மற்றும் பதிவுகள் பராமரிப்பிற்காக எனது தனிப்பட்ட
+                  தகவல்கள் சேகரிக்கப்பட்டு பயன்படுத்தப்படுவதற்கு நான் சம்மதிக்கிறேன்.
+                  எனது தகவல்கள் பாதுகாப்பாக சேமிக்கப்பட்டு, அரசு/அமைப்பின் அங்கீகரிக்கப்பட்ட செயல்பாடுகளுக்காக
+                  மட்டுமே பயன்படுத்தப்படும் என்பதை நான் புரிந்துகொள்கிறேன்.
+                  பயன்பாட்டு விதிமுறைகள் மற்றும் தனியுரிமைக் கொள்கையை நான் ஏற்கிறேன்.
+               </label>
+
+            </div>
+
+            <div class="mt-3">
+               <a href="otp.html" id="agreeBtn" class="btn btn-success d-block bg-btn-green my-2 disabled"
+                  style="opacity: 0.6; pointer-events: none;">
+                  <!-- சம்மதிக்கிறேன்  -->
+                  Agree and Continue
+                  <span class="arrow">
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                  </span>
+               </a>
+            </div>
+
+
+            <input hidden id="device_id" value="">
+            <input hidden id="device_modal" value="">
+         </div>
+      </div>
+
+
+   </main>
+   <!-- ==================================================== -->
+   <div id="snackbar"><i class="bi bi-check2-circle"></i><span id="snackbar_message"></span></div>
+   <div id="error_snackbar"><i class="bi bi-check2-circle"></i> <span id="error_snackbar_message"></span>
+      <!-- jQuery -->
+      <script src="assets/scripts/jquery/jquery.min.js"></script>
+      <!-- Bootstrap Bundle with Popper -->
+      <script src="assets/scripts/bootstrap/bootstrap.bundle.min.js"></script>
+      <!-- <script src="assets/scripts/global.js"></script> -->
+      <!--  <script>
+         var mobile_number = window.localStorage.getItem('mobile_number');
+         $('#mobile_number').text(mobile_number)
+         $('.otp-value').find('input').each(function () {
+            $(this).on('keyup', function (e) {
+               var parent = $($(this).parent().parent());
+               if (e.keyCode === 8 || e.keyCode === 37) {
+                  var prev = parent.find('input#' + $(this).data('previous'));
+                  if (prev.length) {
+                     $(prev).select();
+                  }
+               } else if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 65 && e.keyCode <= 90) || (e.keyCode >= 96 && e.keyCode <= 105) || e.keyCode === 39) {
+                  var next = parent.find('input#' + $(this).data('next'));
+                  if (next.length) {
+                     $(next).select();
+                  } else {
+                     verifyOTP();
+                  }
+               }
+            });
+         });
+         function redirectNextPage(val) {
+            var x = document.getElementById("snackbar");
+            x.className = "show";
+            $("#snackbar_message").empty();
+            $("#snackbar_message").append(val);
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            var delay = 3500;
+            localStorage.setItem('login_status','login');
+            setTimeout(function () { window.location = "details.html"; }, delay);
+         }
+         function otpSnack(val) {
+            var x = document.getElementById("snackbar");
+            x.className = "show";
+            $("#snackbar_message").empty();
+            $("#snackbar_message").append(val);
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+         }
+         function errorDisplay(val) {
+            var x = document.getElementById("error_snackbar");
+            x.className = "show";
+            $("#error_snackbar_message").empty();
+            $("#error_snackbar_message").append(val);
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+         }
+       
+         function verifyOTP() {
+            var user_id = window.localStorage.getItem('user_id');
+            var application_name = window.localStorage.getItem('application_name');
+            var session_id = window.localStorage.getItem('session_id');
+            var otp_1 = $("#otp_1").val();
+            var otp_2 = $("#otp_2").val();
+            var otp_3 = $("#otp_3").val();
+            var otp_4 = $("#otp_4").val();
+            if (otp_1 == '' || otp_2 == '' || otp_3 == '' || otp_4 == '') {
+               errorDisplay("Please fill OTP number to continue");
+               return;
+            } else {
+               var otp = Number(otp_1.concat(otp_2, otp_3, otp_4));
+               $.ajax({
+                  type: 'POST',
+                  headers: {
+        'X-APP-KEY': config.app_key,
+        'X-APP-NAME': 'KMUT Verification App',
+        'X-APP-DEVICE-ID': $('#device_id').val(),
+        'X-APP-DEVICE-MODEL': $('#device_modal').val()
+    },
+                  url: `${config.api_url}/login/otp`,
+                  data: {
+                     'user_id': user_id,
+                     'application_name': application_name,
+                     'session_id': session_id,
+                     'type': 'check',
+                     'otp': otp
+                  },
+                  dataType: 'json',
+                  success: function (data, textStatus, http) {
+                     console.log(data);
+                     if (http.status == 200) {
+                        if (data[0].success == 1) {
+                           window.localStorage.setItem('user_details_kmut_verification', JSON.stringify(data[0].data));
+                           window.localStorage.removeItem('user_id');
+                           redirectNextPage(data[0].message);
+                        } else {
+                           errorDisplay(data[0].message);
+                        }
+                     } else if (http.status == 401) {
+                        errorDisplay(data[0].message);
+                     } else {
+                        errorDisplay(data[0].message);
+                     }
+                  }
+               })
+            }
+         }
+         function resendOTP() {
+            var user_id = window.localStorage.getItem('user_id');
+            var application_name = window.localStorage.getItem('application_name');
+            var session_id = window.localStorage.getItem('session_id');
+            $.ajax({
+               type: 'POST',
+               headers: { 'X-APP-KEY': config.app_key,'X-APP-NAME': 'KMUT Verification App' },
+               url: `${config.api_url}/login/otp`,
+               data: {
+                  'user_id': user_id,
+                  'type': 'send',
+                  'application_name': application_name,
+                  'session_id': session_id
+               },
+               dataType: 'json',
+               success: function (data, textStatus, http) {
+                  if (http.status == 200) {
+                     if (data[0].success == 1) {
+                        $("#otp_1").val('');
+                        $("#otp_2").val('');
+                        $("#otp_3").val('');
+                        $("#otp_4").val('');
+                        otpSnack(data[0].message)
+                     } else {
+                        errorDisplay(data[0].message);
+                     }
+                  } else {
+                     errorDisplay(data[0].message);
+                  }
+               }
+            })
+         }
+      </script> -->
+      <!--  <script type="module">
+         var user_id = window.localStorage.getItem('user_id');
+         var application_name = window.localStorage.getItem('application_name');
+         var session_id = window.localStorage.getItem('session_id');
+         if (user_id == '') {
+            window.location.href = "index.html";
+         } else {
+            $.ajax({
+               type: 'POST',
+               headers: { 'X-APP-KEY': config.app_key,'X-APP-NAME': 'KMUT Verification App' },
+               url: `${config.api_url}/login/otp`,
+               data: {
+                  'user_id': user_id,
+                  'type': 'send',
+                  'application_name': application_name,
+                  'session_id': session_id
+               },
+               dataType: 'json',
+               success: function (data) {
+                  if (data[0].success == 1) {
+                     otpSnack(data[0].message)
+                  } else if (data[0].success == 2) {
+                     otpSnack(data[0].message)
+                  } else {
+                     errorDisplay(data[0].message);
+                  }
+               }
+            })
+         }
+         $(document).on({
+        ajaxStart: function() {
+          $('#preloader').show();
+        },
+        ajaxStop: function() {
+          $('#preloader').hide();
+        }
+      });
+      </script> -->
+
+      <!-- otp -->
+      <script>
+         // Enable Agree button only after consent is checked
+         document.getElementById("consentCheck").addEventListener("change", function () {
+            const agreeBtn = document.getElementById("agreeBtn");
+            if (this.checked) {
+               agreeBtn.classList.remove("disabled");
+               agreeBtn.style.opacity = "1";
+               agreeBtn.style.pointerEvents = "auto";
+            } else {
+               agreeBtn.classList.add("disabled");
+               agreeBtn.style.opacity = "0.6";
+               agreeBtn.style.pointerEvents = "none";
+            }
+         });
+      </script>
+
+      <script>
+         $(document).ready(function () {
+            // When a key is pressed in OTP input
+            $('.otp-value input').on('keyup', function (e) {
+               const input = $(this);
+               const value = input.val();
+               const nextId = input.data('next');
+               const prevId = input.data('previous');
+
+               // Allow only 1 digit and auto move
+               if (value.length === 1 && nextId) {
+                  $('#' + nextId).focus();
+               }
+
+               // If backspace and empty, go to previous input
+               if (e.key === 'Backspace' && !value && prevId) {
+                  $('#' + prevId).focus();
+               }
+
+               // Limit to 1 digit only
+               if (value.length > 1) {
+                  input.val(value.slice(0, 1));
+               }
+            });
+
+            // Prevent scroll on number input
+            $('input[type=number]').on('wheel', function (e) {
+               $(this).blur();
+            });
+         });
+      </script>
+
+      <!-- otp -->
+</body>
+
+</html>

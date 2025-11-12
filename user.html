@@ -19,7 +19,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/dashboardstyle.css">
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <!-- <link rel="stylesheet" href="assets/scripts/toastr/toastr.min.css"> -->
-  <title id="application_title">என் குடும்பம் - என் கனவு 2030 - Tamil Nadu</title>
+  <title id="application_title">மாநில குடும்பத் தரவு - சரிபார்த்தல் மற்றும் உறுதிப்படுத்துதல் - Tamil Nadu</title>
 
   <style>
     .f600 {
@@ -963,7 +963,7 @@
       border-top-left-radius: 16px;
       border-top-right-radius: 16px;
       box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.15);
-      z-index: 999999999999999999999 !important; 
+      z-index: 999999999999999999999 !important;
     }
   </style>
   <style type="text/css">
@@ -1402,7 +1402,7 @@
                           Occupation)</span>
                       </div>
                       <button class="btn btn-sm btn-outline-success rounded-circle edit-btn" id="editOccupationBtn"
-                        data-bs-toggle="offcanvas" data-bs-target=".offcanvasOccupation1" title="Edit Occupation"> 
+                        data-bs-toggle="offcanvas" data-bs-target=".offcanvasOccupation1" title="Edit Occupation">
                         <i class="bi bi-pencil-square"></i>
                       </button>
                     </div>
@@ -1470,7 +1470,7 @@
                           Occupation)</span>
                       </div>
                       <button class="btn btn-sm btn-outline-success rounded-circle edit-btn" id="editOccupationBtn"
-                        data-bs-toggle="offcanvas" data-bs-target=".offcanvasOccupation2" title="Edit Occupation"> 
+                        data-bs-toggle="offcanvas" data-bs-target=".offcanvasOccupation2" title="Edit Occupation">
                         <i class="bi bi-pencil-square"></i>
                       </button>
                     </div>
@@ -1538,7 +1538,7 @@
                           Occupation)</span>
                       </div>
                       <button class="btn btn-sm btn-outline-success rounded-circle edit-btn" id="editOccupationBtn"
-                        data-bs-toggle="offcanvas" data-bs-target=".offcanvasOccupation3" title="Edit Occupation"> 
+                        data-bs-toggle="offcanvas" data-bs-target=".offcanvasOccupation3" title="Edit Occupation">
                         <i class="bi bi-pencil-square"></i>
                       </button>
                     </div>
@@ -1614,7 +1614,7 @@
                 </div>
               </div>
             </div>
-           
+
             <!-- ✅ Occupation Offcanvas -->
             <div class="offcanvas offcanvas-bottom offcanvasOccupation1" tabindex="-1" id="offcanvasOccupation1">
               <div class="offcanvas-header">
@@ -1635,7 +1635,8 @@
                   <option>09 - தற்காலிக மற்றும் பகுதி நேர பணியாளர்</option>
                 </select>
                 <div class="text-end mt-3">
-                  <button data-bs-dismiss="offcanvas" class="btn btn-success btn-sm" id="submitOccupation1">Submit</button>
+                  <button data-bs-dismiss="offcanvas" class="btn btn-success btn-sm"
+                    id="submitOccupation1">Submit</button>
                 </div>
               </div>
             </div>
@@ -1659,7 +1660,8 @@
                   <option>09 - தற்காலிக மற்றும் பகுதி நேர பணியாளர்</option>
                 </select>
                 <div class="text-end mt-3">
-                  <button data-bs-dismiss="offcanvas" class="btn btn-success btn-sm" id="submitOccupation1">Submit</button>
+                  <button data-bs-dismiss="offcanvas" class="btn btn-success btn-sm"
+                    id="submitOccupation1">Submit</button>
                 </div>
               </div>
             </div>
@@ -1683,11 +1685,12 @@
                   <option>09 - தற்காலிக மற்றும் பகுதி நேர பணியாளர்</option>
                 </select>
                 <div class="text-end mt-3">
-                  <button data-bs-dismiss="offcanvas" class="btn btn-success btn-sm" id="submitOccupation1">Submit</button>
+                  <button data-bs-dismiss="offcanvas" class="btn btn-success btn-sm"
+                    id="submitOccupation1">Submit</button>
                 </div>
               </div>
             </div>
-           
+
             <!-- ✅ Offcanvas for Wrong Data -->
             <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasWrongData">
               <div class="offcanvas-header py-2">
@@ -2390,40 +2393,33 @@
                   
                   </div> -->
               <!-- QR + upload -->
-              <div class="qr-area align-items-center"
-     style="display:flex;gap:12px;align-items:center;">
+              <div class="qr-area align-items-center" style="display:flex;gap:12px;align-items:center;">
 
-  <!-- QR Preview Box -->
-  <div class="qr-box position-relative" style="width:110px;height:110px;">
-    <img id="qrPreview"
-         src="assets/img/qr.jpeg"
-         alt="QR Preview"
-         class="img-fluid"
-         style="width:100%;height:100%;border-radius:8px;object-fit:cover;border:1px solid #ddd;">
-  </div>
+                <!-- QR Preview Box -->
+                <div class="qr-box position-relative" style="width:110px;height:110px;">
+                  <img id="qrPreview" src="assets/img/qr.jpeg" alt="QR Preview" class="img-fluid"
+                    style="width:100%;height:100%;border-radius:8px;object-fit:cover;border:1px solid #ddd;">
+                </div>
 
-  <!-- Right Section -->
-  <div style="flex:1;">
-    <!-- Capture QR Image -->
-    <button id="captureQrBtn"
-            class="btn btn-outline-success w-100 py-2 rounded-pill fw-semibold"
-            type="button"
-            style="font-size:14px;">
-      📸 QR குறியீட்டை ஸ்கேன் செய்யவும்
-    </button>
+                <!-- Right Section -->
+                <div style="flex:1;">
+                  <!-- Capture QR Image -->
+                  <button id="captureQrBtn" class="btn btn-outline-success w-100 py-2 rounded-pill fw-semibold"
+                    type="button" style="font-size:14px;">
+                    📸 QR குறியீட்டை ஸ்கேன் செய்யவும்
+                  </button>
 
-    <!-- Hidden file input -->
-    <input type="file" id="qrCameraInput" accept="image/*" capture="environment" style="display:none;">
+                  <!-- Hidden file input -->
+                  <input type="file" id="qrCameraInput" accept="image/*" capture="environment" style="display:none;">
 
-    <!-- QR Result Box -->
-    <div id="qrResultBox" class="mt-2" style="display:none;">
-      <input type="text" id="qrNumber"
-             class="form-control form-control-sm text-center fw-semibold border-success"
-             maxlength="12"
-             placeholder="QR குறியீடு எண் காண்பிக்கப்படும்" value="789456231456">
-    </div>
-  </div>
-</div>
+                  <!-- QR Result Box -->
+                  <div id="qrResultBox" class="mt-2" style="display:none;">
+                    <input type="text" id="qrNumber"
+                      class="form-control form-control-sm text-center fw-semibold border-success" maxlength="12"
+                      placeholder="QR குறியீடு எண் காண்பிக்கப்படும்" value="789456231456">
+                  </div>
+                </div>
+              </div>
 
               <!-- QR Section -->
               <!-- <div class="qr-area align-items-center" aria-hidden="false"
@@ -3022,41 +3018,41 @@
     });
   </script> -->
   <script>
-  const otpCanvas = new bootstrap.Offcanvas(document.getElementById('otpOffcanvas'));
-  const verifyBtn = document.getElementById('verifyBtn');
-  const verifiedIcon = document.getElementById('verifiedIcon');
-  const submitOtp = document.getElementById('submitOtp');
-  const mobileInput = document.getElementById('mobileInput');
+    const otpCanvas = new bootstrap.Offcanvas(document.getElementById('otpOffcanvas'));
+    const verifyBtn = document.getElementById('verifyBtn');
+    const verifiedIcon = document.getElementById('verifiedIcon');
+    const submitOtp = document.getElementById('submitOtp');
+    const mobileInput = document.getElementById('mobileInput');
 
-  // Show OTP offcanvas on verify button click
-  verifyBtn.addEventListener('click', () => {
-    otpCanvas.show();
-  });
-
-  // When OTP is submitted successfully
-  submitOtp.addEventListener('click', () => {
-    otpCanvas.hide(); // Close OTP offcanvas
-    verifyBtn.classList.add('d-none'); // Hide Verify button
-    verifiedIcon.classList.remove('d-none'); // Show Verified icon
-    mobileInput.classList.add('is-valid'); // Bootstrap valid style
-
-    // ✅ Update the text to show "verified"
-    const numberOnly = mobileInput.value.replace(/\s*\(.*?\)\s*/g, ''); // remove old (unverified)
-    mobileInput.value = `${numberOnly.trim()} (verified)`;
-
-    // Keep input read-only
-    mobileInput.setAttribute('readonly', true);
-  });
-
-  // OTP auto-focus logic
-  document.querySelectorAll('.otp-input').forEach((input, index, inputs) => {
-    input.addEventListener('input', () => {
-      if (input.value.length === 1 && index < inputs.length - 1) {
-        inputs[index + 1].focus();
-      }
+    // Show OTP offcanvas on verify button click
+    verifyBtn.addEventListener('click', () => {
+      otpCanvas.show();
     });
-  });
-</script>
+
+    // When OTP is submitted successfully
+    submitOtp.addEventListener('click', () => {
+      otpCanvas.hide(); // Close OTP offcanvas
+      verifyBtn.classList.add('d-none'); // Hide Verify button
+      verifiedIcon.classList.remove('d-none'); // Show Verified icon
+      mobileInput.classList.add('is-valid'); // Bootstrap valid style
+
+      // ✅ Update the text to show "verified"
+      const numberOnly = mobileInput.value.replace(/\s*\(.*?\)\s*/g, ''); // remove old (unverified)
+      mobileInput.value = `${numberOnly.trim()} (verified)`;
+
+      // Keep input read-only
+      mobileInput.setAttribute('readonly', true);
+    });
+
+    // OTP auto-focus logic
+    document.querySelectorAll('.otp-input').forEach((input, index, inputs) => {
+      input.addEventListener('input', () => {
+        if (input.value.length === 1 && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+      });
+    });
+  </script>
 
   <script>
     // Bootstrap Offcanvas instance
@@ -3670,14 +3666,14 @@
           // if (firstTab) firstTab.click();
 
           // Optional: smooth scroll before navigating
-          
+
 
           // ⏳ Wait 3 seconds, then go to details.html
           setTimeout(() => {
             window.location.href = "details.html";
             window.scrollTo({ top: 0, behavior: "smooth" });
           }, 1000);
-        }); 
+        });
 
 
       });
@@ -4384,35 +4380,35 @@
   </script>
 
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const captureBtn = document.getElementById("captureQrBtn");
-  const qrInput = document.getElementById("qrCameraInput");
-  const qrPreview = document.getElementById("qrPreview");
-  const qrResultBox = document.getElementById("qrResultBox");
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const captureBtn = document.getElementById("captureQrBtn");
+      const qrInput = document.getElementById("qrCameraInput");
+      const qrPreview = document.getElementById("qrPreview");
+      const qrResultBox = document.getElementById("qrResultBox");
 
-  // Click → open camera
-  captureBtn.addEventListener("click", () => {
-    qrInput.click();
-  });
+      // Click → open camera
+      captureBtn.addEventListener("click", () => {
+        qrInput.click();
+      });
 
-  // Handle image selection (capture or upload)
-  qrInput.addEventListener("change", (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
+      // Handle image selection (capture or upload)
+      qrInput.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      qrPreview.src = e.target.result; // Show captured image
-      qrResultBox.style.display = "block"; // Reveal number input
-    };
-    reader.readAsDataURL(file);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          qrPreview.src = e.target.result; // Show captured image
+          qrResultBox.style.display = "block"; // Reveal number input
+        };
+        reader.readAsDataURL(file);
 
-    // Reset input for next use
-    qrInput.value = "";
-  });
-});
-</script>
+        // Reset input for next use
+        qrInput.value = "";
+      });
+    });
+  </script>
 
 
 

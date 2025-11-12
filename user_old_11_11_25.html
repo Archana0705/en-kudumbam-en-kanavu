@@ -19,12 +19,12 @@
     <link rel="stylesheet" type="text/css" href="assets/css/dashboardstyle.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- <link rel="stylesheet" href="assets/scripts/toastr/toastr.min.css"> -->
-    <title id="application_title">என் குடும்பம் - என் கனவு 2030 - Tamil Nadu</title>
+    <title id="application_title">மாநில குடும்பத் தரவு - சரிபார்த்தல் மற்றும் உறுதிப்படுத்துதல் - Tamil Nadu</title>
     <style>
         #imagePreview img {
-  border-radius: 6px;
-  object-fit: cover;
-}
+            border-radius: 6px;
+            object-fit: cover;
+        }
 
         /* ✅ Hidden dropdown initially */
         /* ✅ Hide both select and its Select2 container */
@@ -2218,14 +2218,14 @@
                             </div>
 
                             <!-- upload controls -->
-                           <!--  <div class="controls">
+                            <!--  <div class="controls">
                                 <input id="cameraInput" type="file" accept="image/*" capture="environment"
                                     style="display:none">
 
 
                             </div> -->
 
-                   <!--    <div class="card border-0 shadow-sm p-3">
+                            <!--    <div class="card border-0 shadow-sm p-3">
   <h6 class="txt-blue mb-2 font15">
     <i class="bi bi-camera-fill me-1"></i> படம் எடுக்கவும் (Capture Image)
   </h6>
@@ -2246,7 +2246,7 @@
 
 
 
-                          
+
                             <!-- JS -->
                             <script>
                                 document.addEventListener("DOMContentLoaded", () => {
@@ -3770,56 +3770,56 @@
         });
     </script>
 
-<script>
-(() => {
-  // prevent this init running twice
-  if (window._captureInitDone) {
-    console.warn("Capture already initialized - skipping re-init");
-    return;
-  }
-  window._captureInitDone = true;
+    <script>
+        (() => {
+            // prevent this init running twice
+            if (window._captureInitDone) {
+                console.warn("Capture already initialized - skipping re-init");
+                return;
+            }
+            window._captureInitDone = true;
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const MAX_IMAGES = 4;
+            document.addEventListener("DOMContentLoaded", () => {
+                const MAX_IMAGES = 4;
 
-    // find required elements
-    let openCameraBtn = document.getElementById("openCameraBtn");
-    const imagePreview = document.getElementById("imagePreview");
-    const successMsg = document.getElementById("captureSuccess");
+                // find required elements
+                let openCameraBtn = document.getElementById("openCameraBtn");
+                const imagePreview = document.getElementById("imagePreview");
+                const successMsg = document.getElementById("captureSuccess");
 
-    if (!openCameraBtn || !imagePreview) {
-      console.error("Capture init failed: missing required elements. Make sure #openCameraBtn and #imagePreview exist.");
-      return;
-    }
+                if (!openCameraBtn || !imagePreview) {
+                    console.error("Capture init failed: missing required elements. Make sure #openCameraBtn and #imagePreview exist.");
+                    return;
+                }
 
-    // replace button with a clone to remove any previously attached listeners (defensive)
-    const clonedBtn = openCameraBtn.cloneNode(true);
-    openCameraBtn.parentNode.replaceChild(clonedBtn, openCameraBtn);
-    openCameraBtn = clonedBtn;
+                // replace button with a clone to remove any previously attached listeners (defensive)
+                const clonedBtn = openCameraBtn.cloneNode(true);
+                openCameraBtn.parentNode.replaceChild(clonedBtn, openCameraBtn);
+                openCameraBtn = clonedBtn;
 
-    // create a single hidden input appended to body and reuse it
-    let hiddenInput = document.createElement("input");
-    hiddenInput.type = "file";
-    hiddenInput.accept = "image/*";
-    hiddenInput.capture = "environment"; // mobile camera hint
-    hiddenInput.style.display = "none";
-    document.body.appendChild(hiddenInput);
+                // create a single hidden input appended to body and reuse it
+                let hiddenInput = document.createElement("input");
+                hiddenInput.type = "file";
+                hiddenInput.accept = "image/*";
+                hiddenInput.capture = "environment"; // mobile camera hint
+                hiddenInput.style.display = "none";
+                document.body.appendChild(hiddenInput);
 
-    let imageCount = 0;
+                let imageCount = 0;
 
-    // utility: show success briefly
-    const showSuccess = () => {
-      if (!successMsg) return;
-      successMsg.classList.remove("d-none");
-      setTimeout(() => successMsg.classList.add("d-none"), 1800);
-    };
+                // utility: show success briefly
+                const showSuccess = () => {
+                    if (!successMsg) return;
+                    successMsg.classList.remove("d-none");
+                    setTimeout(() => successMsg.classList.add("d-none"), 1800);
+                };
 
-    // utility: add preview card
-    const addPreview = (dataUrl) => {
-      const col = document.createElement("div");
-      col.className = "col-6 p-1";
-      // square card with object-fit cover to keep consistent sizes
-      col.innerHTML = `
+                // utility: add preview card
+                const addPreview = (dataUrl) => {
+                    const col = document.createElement("div");
+                    col.className = "col-6 p-1";
+                    // square card with object-fit cover to keep consistent sizes
+                    col.innerHTML = `
         <div class="border rounded-3 overflow-hidden shadow-sm position-relative d-flex align-items-center justify-content-center"
              style="width:100%; aspect-ratio:1/1; background:#f9f9f9;">
           <img src="${dataUrl}" alt="Captured" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">
@@ -3827,70 +3827,70 @@
             <i class="bi bi-x-lg"></i>
           </button>
         </div>`;
-      imagePreview.appendChild(col);
-      imageCount++;
-      showSuccess();
-    };
+                    imagePreview.appendChild(col);
+                    imageCount++;
+                    showSuccess();
+                };
 
-    // when hiddenInput changes (user selected or captured an image)
-    hiddenInput.addEventListener("change", (ev) => {
-      try {
-        const file = ev.target.files && ev.target.files[0];
-        if (!file) {
-          // user canceled - just reset and exit
-          hiddenInput.value = "";
-          return;
-        }
+                // when hiddenInput changes (user selected or captured an image)
+                hiddenInput.addEventListener("change", (ev) => {
+                    try {
+                        const file = ev.target.files && ev.target.files[0];
+                        if (!file) {
+                            // user canceled - just reset and exit
+                            hiddenInput.value = "";
+                            return;
+                        }
 
-        if (imageCount >= MAX_IMAGES) {
-          alert(`அதிகபட்சம் ${MAX_IMAGES} படங்களை மட்டும் பதிவேற்றலாம்.`);
-          hiddenInput.value = "";
-          return;
-        }
+                        if (imageCount >= MAX_IMAGES) {
+                            alert(`அதிகபட்சம் ${MAX_IMAGES} படங்களை மட்டும் பதிவேற்றலாம்.`);
+                            hiddenInput.value = "";
+                            return;
+                        }
 
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          addPreview(e.target.result);
-          // reset file input to allow same-file uploads later
-          hiddenInput.value = "";
-        };
-        reader.readAsDataURL(file);
-      } catch (err) {
-        console.error("Error in hiddenInput change handler:", err);
-        hiddenInput.value = "";
-      }
-    });
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            addPreview(e.target.result);
+                            // reset file input to allow same-file uploads later
+                            hiddenInput.value = "";
+                        };
+                        reader.readAsDataURL(file);
+                    } catch (err) {
+                        console.error("Error in hiddenInput change handler:", err);
+                        hiddenInput.value = "";
+                    }
+                });
 
-    // button click -> open the hidden input (one reliable click)
-    openCameraBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      try {
-        if (imageCount >= MAX_IMAGES) {
-          alert(`அதிகபட்சம் ${MAX_IMAGES} படங்களை மட்டும் பதிவேற்றலாம்.`);
-          return;
-        }
-        // For reliability: create a tiny delay to ensure browser treats this as user gesture
-        setTimeout(() => hiddenInput.click(), 0);
-      } catch (err) {
-        console.error("Failed to open file picker:", err);
-      }
-    });
+                // button click -> open the hidden input (one reliable click)
+                openCameraBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    try {
+                        if (imageCount >= MAX_IMAGES) {
+                            alert(`அதிகபட்சம் ${MAX_IMAGES} படங்களை மட்டும் பதிவேற்றலாம்.`);
+                            return;
+                        }
+                        // For reliability: create a tiny delay to ensure browser treats this as user gesture
+                        setTimeout(() => hiddenInput.click(), 0);
+                    } catch (err) {
+                        console.error("Failed to open file picker:", err);
+                    }
+                });
 
-    // remove preview handler (delegation)
-    imagePreview.addEventListener("click", (e) => {
-      if (e.target.closest(".remove-img")) {
-        const col = e.target.closest(".col-6");
-        if (col) {
-          col.remove();
-          imageCount = Math.max(0, imageCount - 1);
-        }
-      }
-    });
+                // remove preview handler (delegation)
+                imagePreview.addEventListener("click", (e) => {
+                    if (e.target.closest(".remove-img")) {
+                        const col = e.target.closest(".col-6");
+                        if (col) {
+                            col.remove();
+                            imageCount = Math.max(0, imageCount - 1);
+                        }
+                    }
+                });
 
-    console.log("Capture init OK — single handler installed");
-  });
-})();
-</script>
+                console.log("Capture init OK — single handler installed");
+            });
+        })();
+    </script>
 
 
 </body>
