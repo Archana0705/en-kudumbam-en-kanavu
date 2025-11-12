@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
+  <!-- Bootstrap CSS -->
+  <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <!-- font awesome CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap-icons/bootstrap-icons.css">
+  <!-- sweetalert -->
+  <link rel="stylesheet" href="assets/vendor/sweetalert2/css/sweetalert.min.css" />
+  <link rel="stylesheet" href="assets/vendor/sweetalert2/css/sweetalert2.min.css" />
+  <!-- general CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/css/dashboardstyle.css">
+  <title id="application_title">என் குடும்பம் - என் கனவு 2030 - Tamil Nadu</title>
+  <!-- ✅ Styles -->
+  <style>
+    .font-13 {
+      font-size: 13px;
+    }
+
+    .cpointer {
+      cursor: pointer;
+    }
+
+    .shadow-sm {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .family-section p {
+      font-size: 14px;
+      color: #00796B !important;
+    }
+
+    .delete-section select,
+    .delete-section textarea {
+      font-size: 14px;
+    }
+
+    .btn:focus {
+      box-shadow: none !important;
+    }
+
+    .btn-close-section {
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-close-section:hover {
+      opacity: 1;
+      color: #000;
+    }
+
+    .collapse-section {
+      height: 0;
+      opacity: 0;
+      overflow: hidden;
+      padding: 0 !important;
+      margin-top: 0 !important;
+      transition: height 0.35s ease, opacity 0.35s ease;
+    }
+
+    .collapse-section.show {
+      opacity: 1;
+      padding: 1rem !important;
+      margin-top: 0.75rem !important;
+    }
+  </style>
+  <style type="text/css">
+    .font12 {
+      font-size: 12px;
+    }
+
+    #itemSearch::placeholder {
+      font-size: 10.5px;
+      color: #999;
+    }
+
+    .font-13 {
+      font-size: 15px !important;
+    }
+
+    .font-11 {
+      font-size: 11px;
+    }
+
+    .searchbox input.form-control {
+      background: #fff !important;
+    }
+
+    .searchbox .input-group-text {
+      color: #fff;
+      background-color: #00796B !important;
+    }
+
+    .bggradient {
+      /*      background: linear-gradient(to right, rgb(25 30 94), rgb(34 70 129));*/
+      background: linear-gradient(to right, rgb(201 245 242), rgb(209 246 243));
+    }
+
+    .bgclosegradient {
+      background: linear-gradient(to right, rgb(255, 235, 200), rgb(255, 210, 160));
+    }
+
+    #myTab button {
+      font-size: 14px !important;
+    }
+  </style>
+</head>
+
+<body class="d-flex flex-column h-100 bg-login">
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-black-view pt-2 pb-2">
+      <div class="container-fluid w-100 d-block text-center">
+        <div class="col-lg-12 banner-left1 d-flex">
+          <a href="#" class="text-white text-none px-2 font13 d-flex justify-content-center align-items-center">
+            <img src="assets/img/logo.png" class="img-fluid mainlogo" alt="logo">
+          </a>
+
+          <a href="#" class="text-white text-none px-2 font-15 w-75">
+            <b> <span class="txt-orange d-block">என் குடும்பம்</span>
+              <small class="waviy">
+                <span style="--i:1">எ</span>
+                <span style="--i:2">ன்</span>
+                <span style="--i:3"></span>
+                <span style="--i:4">க</span>
+                <span style="--i:5">ன</span>
+                <span style="--i:6">வு</span>
+                <span style="--i:7"></span>
+                <span style="--i:8">2</span>
+                <span style="--i:8">0</span>
+                <span style="--i:9">3</span>
+                <span style="--i:10">0</span>
+              </small>
+            </b>
+          </a>
+          <a data-bs-toggle="offcanvas" data-bs-target=".logout"
+            class="cpointer text-white text-none px-2 icon-out d-none">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- <div id="preloader"></div> -->
+  <!-- Begin page content -->
+  <main class="flex-shrink-0 h-100 main-space">
+    <div class="container-fluid box-layout">
+      <div class="col-lg-12 searchbox mt-2">
+        <div class="input-group mb-2">
+          <span class="input-group-text" id="basic-addon1" style="font-size: 10px;"><i class="bi bi-search"></i></span>
+          <input type="search" class="form-control" placeholder="முகவரி, மொபைல், குடும்ப அட்டை எண்" aria-label="search"
+            aria-describedby="basic-addon1" id="itemSearch">
+        </div>
+      </div>
+      <div class="alert alert-danger d-none" id="error_div" role="alert">எந்த விவரமும் கிடைக்கவில்லை!</div>
+      <select class="form-select mb-2" aria-label="Default select example" id="user_ration" name="user_ration"
+        onchange="get_pds_shop_code_list_by_vao(this.value)">
+        <option value="09AD003PN">09AD003PN</option>
+        <option value="09AD004PN">09AD004PN</option>
+        <option value="09AD005PN">09AD005PN</option>
+        <option value="09AD006PN">09AD006PN</option>
+        <option value="02FB147NT">02FB147NT</option>
+        <option value="02GB065NC">02GB065NC</option>
+      </select>
+      <!-- <select class="form-select mb-2" aria-label="Default select example" id="user_street" name="user_ration">
+        <option value="09AD003PN">Select Street</option>
+        <option value="09AD004PN">street 2</option>
+        <option value="09AD005PN">street 3</option>
+        <option value="09AD006PN">street 4</option>
+        <option value="02FB147NT">street 5</option>
+        <option value="02GB065NC">street 6</option>
+      </select> -->
+      <div class="col-lg-12">
+
+
+
+        <h6 class="pds-shop-text"><i class="bi bi-check2-circle"></i> ரேஷன் கடை பட்டியலில்<span
+            id="assigned_shop_number"></span> உள்ள பயனாளிகள்</h6>
+      </div>
+      <!-- <ul class="nav nav-tabs mb-2" id="myTab" role="tablist">
+        <li class="nav-item m-2" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#pending-tab" type="button"
+            role="tab" aria-controls="home-tab-pane" aria-selected="true"><i class="bi bi-arrow-clockwise"></i> Pending
+          <span class="badge bg-danger mx-1" id="span_pending"></span></button>
+        </li>
+        <li class="nav-item m-2" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#completed-tab" type="button"
+            role="tab" aria-controls="profile-tab-pane" aria-selected="false"><i
+            class="bi bi-check2-circle"></i> Completed <span class="badge bg-success mx-1"
+            id="span_completed"></span></button>
+        </li>
+        <li class="nav-item m-2" role="presentation" style="display: none;">
+          <a class="nav-link" href="map.html" role="tab" aria-controls="profile-tab-pane" aria-selected="false"><i
+            class="bi bi-check2-circle"></i>GIS View</a>
+        </li>
+      </ul> -->
+      <ul class="nav nav-tabs mb-2" id="myTab" role="tablist">
+        <!-- Pending Tab -->
+        <!-- நிலுவையில் -->
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active d-flex align-items-center gap-1" id="home-tab" data-bs-toggle="tab"
+            data-bs-target="#pending-tab" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+            <i class="bi bi-arrow-clockwise"></i>
+            <span>Pending</span>
+            <span class="badge bg-danger rounded-pill ms-1" id="span_pending">1</span>
+          </button>
+        </li>
+
+        <!-- Completed Tab -->
+        <!-- நிறைவு பெற்றவை -->
+        <li class="nav-item mx-1" role="presentation">
+          <button class="nav-link d-flex align-items-center gap-1" id="profile-tab" data-bs-toggle="tab"
+            data-bs-target="#completed-tab" type="button" role="tab" aria-controls="profile-tab-pane"
+            aria-selected="false">
+            <i class="bi bi-check2-circle"></i>
+            <span>Completed</span>
+            <span class="badge bg-success rounded-pill ms-1" id="span_completed">2</span>
+          </button>
+        </li>
+
+        <!-- GIS View (optional, hidden by default) -->
+        <li class="nav-item m-2" role="presentation" style="display:none;">
+          <a class="nav-link d-flex align-items-center gap-1" href="map.html" role="tab" aria-controls="gis-tab-pane"
+            aria-selected="false">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>GIS வரைபடம்</span>
+            <span class="badge bg-secondary rounded-pill ms-1">1</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="fw-bold text-danger font8 mb-1">(குடும்ப அட்டை எண், மொபைல் எண், பெயர், முகவரி)</p>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="pending-tab" role="tabpanel" aria-labelledby="home-tab">
+          <div class="shop_list_pending">
+
+            <!-- Verify Card -->
+            <div class="card mb-2 bggradient border-0 shadow-sm rounded-3">
+              <div class="card-body py-2 px-1 ps-0">
+                <div class="row m-0">
+
+                  <div class="col-12 d-flex justify-content-between align-items-center mb-1">
+
+                    <!-- Left side: Verify -->
+                    <div>
+                      <a href="user.html">
+                        <span class="badge bg-primary cpointer py-2">
+                          <i class="bi bi-person-check-fill"></i> Verify
+                        </span>
+                      </a>
+                    </div>
+
+                    <!-- Right side: Close -->
+                    <div>
+                      <a href="#">
+                        <span class="badge bg-danger cpointer toggle-delete py-2">
+                          <i class="bi bi-trash"></i> Close
+                        </span>
+                      </a>
+                    </div>
+
+                  </div>
+
+
+                  <div class="col-12">
+                    <label class="text-white form-label mb-0 w-100 font-13">
+                      <span><i class="bi bi-card-checklist"></i> 333736172310</span>,
+                      <span><i class="bi bi-telephone"></i> 8508074451</span>
+                    </label>
+                    <label class="text-white form-label mb-0 w-100 font-13">
+                      <span><i class="bi bi-person"></i> Deepa Vivekanadan</span>,
+                      <span><i class="bi bi-pin-map"></i> 015, Kamachiamman Kovil Sandhu, Karungal Palayam</span>
+                      <a href="#" class="ms-1">
+                        <span class="badge bg-success cpointer toggle-family py-2">
+                          <i class="bi bi-eye"></i> more
+                        </span>
+                      </a>
+                    </label>
+                  </div>
+
+
+                  <!-- <div class="d-flex gap-2 justify-content-start">
+                    <a href="#">
+                      <span class="badge bg-success cpointer toggle-family py-2">
+                        <i class="bi bi-eye"></i> more
+                      </span>
+                    </a>
+
+                  </div> -->
+
+                </div>
+
+                <!-- Family Details Section -->
+                <div class="family-section mt-3 p-3 bg-white rounded-3 shadow-sm position-relative collapse-section">
+                  <button type="button"
+                    class="btn-close-section btn btn-sm text-secondary position-absolute top-0 end-0 mt-2 me-2 border-0 bg-transparent">
+                    <i class="bi bi-x-circle-fill fs-5"></i>
+                  </button>
+                  <h6 class="text-primary1 mild-color fw-semibold mb-2">
+                    <i class="bi bi-people-fill me-1"></i> Family Members
+                  </h6>
+                  <div class="border-start ps-2">
+                    <p class="mb-1"><strong>Ramesh Kumar</strong> — 42 / Male</p>
+                    <p class="mb-1"><strong>Lakshmi Devi</strong> — 39 / Female</p>
+                    <p class="mb-0"><strong>Arun Kumar</strong> — 18 / Male</p>
+                  </div>
+                </div>
+
+                <!-- Delete Section -->
+                <div class="delete-section mt-3 p-3 bg-white rounded-3 shadow-sm position-relative collapse-section">
+                  <button type="button"
+                    class="btn-close-section btn btn-sm text-secondary position-absolute top-0 end-0 mt-2 me-2 border-0 bg-transparent">
+                    <i class="bi bi-x-circle-fill fs-5"></i>
+                  </button>
+                  <h6 class="text-white1 mild-color">
+                    <i class="bi bi-exclamation-octagon-fill me-1"></i> Close Survey
+                  </h6>
+                  <div class="mb-2">
+                    <label class="form-label small text-white mb-1">கள ஆய்வு செய்ய முடியாததற்கான காரணம்</label>
+                    <select class="form-select form-select-sm mb-2">
+                      <option selected disabled>Select reason</option>
+                      <option>Not traceable</option>
+                      <option>Family member details not correct</option>
+                      <option>Not willing to participate</option>
+                      <option>Non-cooperative</option>
+                    </select>
+                    <textarea class="form-control" rows="3"
+                      placeholder="Enter additional remarks (optional)"></textarea>
+                  </div>
+                  <div class="text-end">
+                    <button class="btn btn-outline-danger text-bg-danger btn-sm rounded-pill">
+                      <i class="bi bi-trash"></i> Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="card mb-2 bggradient">
+              <div class="card-body py-1 px-1">
+                <div class="row m-0">
+                  <div class="col-lg-12 d-flex justify-content-between align-items-center">
+                    <a href="user.html" onclick="view_onclick('333736172310','TNKMUTVID386116','09AD003PN','586015')"> 
+                    <span class="badge text-bg-primary bg-primary mx-2 cpointer"> 
+                    <i class="bi bi-eye"></i> Verify 
+                    </span> 
+                    </a> 
+                  </div>
+                  <div class="col-lg-12">
+                    <label for="depName" class="text-white form-label mb-0 w-100 font-13">
+                    <span><i class="bi bi-card-checklist"></i> 333736172310</span>, 
+                    <span><i class="bi bi-telephone"></i> 8508074451</span>
+                    </label>
+                    <label for="depName" class="text-white form-label mb-0 w-100 font-13">
+                    <span><i class="bi bi-person"></i> Deepa Vivekanadan</span>, 
+                    <span><i class="bi bi-pin-map"></i> 015,Kamachiamman Kovil Sandhu,Karungal Palayam</span>
+                    </label>
+                    <span class="d-none">015,Kamachiamman Kovil Sandhu,Karungal Palayam</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card mb-2 bggradient">
+              <div class="card-body py-1 px-1">
+                <div class="row m-0">
+                  <div class="col-lg-12 d-flex justify-content-between align-items-center">
+                    <a href="user.html" onclick="view_onclick('333764957869','TNKMUTVID386585','09AD003PN','586043')"> 
+                    <span class="badge text-bg-primary bg-primary mx-2 cpointer"> 
+                    <i class="bi bi-eye"></i> Verify 
+                    </span> 
+                    </a> 
+                  </div>
+                  <div class="col-lg-12">
+                    <label for="depName" class="text-white form-label mb-0 w-100 font-13">
+                    <span><i class="bi bi-card-checklist"></i> 333764957869</span>, 
+                    <span><i class="bi bi-telephone"></i> 9865603656</span>
+                    </label>
+                    <label for="depName" class="text-white form-label mb-0 w-100 font-13">
+                    <span><i class="bi bi-person"></i> திலகவதி T</span>, 
+                    <span><i class="bi bi-pin-map"></i> W/O Laxmanan,18/20, kamatchi amman kovil santhu,karungal palayam</span>
+                    </label>
+                    <span class="d-none">W/O Laxmanan,18/20, kamatchi amman kovil santhu,karungal palayam</span>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="tab-pane fade" id="completed-tab" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="shop_list_completed">
+            <div class="card mb-2 bgclosegradient">
+              <div class="card-body py-1 px-1">
+                <div class="row m-0">
+                  <div class="col-lg-12 d-flex justify-content-between align-items-center">
+                    <span class="badge text-bg-success bg-success cpointer"><i class="bi bi-check2-circle"></i>
+                      Closed</span> <span class="badge bg-success">TNKMUTVID656824</span>
+                  </div>
+                  <div class="col-lg-12">
+                    <label for="depName" class="text-white form-label mb-0 w-100 font-13">
+                      <span><i class="bi bi-card-checklist"></i> 333321978662</span>,
+                      <span><i class="bi bi-telephone"></i> 9578546106</span>
+                    </label>
+                    <label for="depName" class="text-white form-label mb-0 w-100 font-13">
+                      <span><i class="bi bi-person"></i> Banumathi</span>,
+                      <span><i class="bi bi-pin-map"></i> S/O Ponnusamy,80,KARUNGAL PALAYAM, CHENGUTUVAN STREET</span>
+                    </label>
+                    <span class="d-none">S/O Ponnusamy,80,KARUNGAL PALAYAM, CHENGUTUVAN STREET</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card mb-2 bggradient">
+              <div class="card-body py-1 px-1">
+                <div class="row m-0">
+                  <div class="col-lg-12 d-flex justify-content-between align-items-center">
+                    <span class="badge text-bg-success bg-success cpointer"><i class="bi bi-check2-circle"></i>
+                      Completed</span> <span class="badge bg-success">TNKMUTVID348008</span>
+                  </div>
+                  <div class="col-lg-12">
+                    <label for="depName" class="text-white form-label mb-0 w-100 font-13">
+                      <span><i class="bi bi-card-checklist"></i> 333106482791</span>,
+                      <span><i class="bi bi-telephone"></i> 9965372699</span>
+                    </label>
+                    <label for="depName" class="text-white form-label mb-0 w-100 font-13">
+                      <span><i class="bi bi-person"></i> Neelavathi</span>,
+                      <span><i class="bi bi-pin-map"></i> S/O: Thirunavukkarasu,5, KOTTAIYAR STREET 3,INDIRANAGAR</span>
+                    </label>
+                    <span class="d-none">S/O: Thirunavukkarasu,5, KOTTAIYAR STREET 3,INDIRANAGAR</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </main>
+  <footer class="footer mt-auto text-center">
+    <div class="container-fluid">
+      <div class="text-center">
+        <div class="mt-1 mb-0">
+          <!-- <p class="info-icons mb-0 nomargin"><i class="bi bi-calendar-check font12"></i> <span id="showdate"
+              class="font12"></span> <i class="bi bi-clock font12"></i><span id="showTime"
+              class="mx-1 font12"></span><span id="user_lat" class="mx-1 font12"></span><span id="user_long"
+              class=" font12"></span><span id="accuracy" class="mx-1 font12"></span></p> -->
+          <p class="info-icons mb-0 nomargin">
+            <i class="bi bi-calendar-check font12"></i>
+            <span id="showdate" class="font12"></span>
+            <i class="bi bi-clock font12"></i>
+            <span id="showTime" class="mx-1 font12"></span>
+            <span id="user_lat" class="mx-1 font12"></span>
+            <span id="user_long" class="font12"></span>
+            <span id="accuracy" class="mx-1 font12"></span>
+          </p>
+          <p class="mb-0 font10 footer-data">
+            <i class="bi bi-person-check-fill font9"></i><span id="user_name" class="mx-1 font9">UserName</span><i
+              class="bi bi-telephone-forward font9"></i><span id="mobile_number" class="mx-1 font9">9876543210</span>
+            <span class="mx-1 font9" id="version_name">V2.0.0</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="offcanvas offcanvas-bottom logout" tabindex="-1" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas-header py-2">
+      <h5 class="offcanvas-title" id="offcanvasBottomLabel">Quick Menus</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body small py-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link font-14 font6" aria-current="page" href="index.html"><i
+              class="bi bi-arrow-right-circle"></i> Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+  <!-- jQuery -->
+  <script src="assets/scripts/jquery/jquery.min.js"></script>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="assets/scripts/bootstrap/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function () {
+
+      // 🕒 Update Date & Time
+      function updateDateTime() {
+        const now = new Date();
+
+        // Format date as DD-MM-YYYY
+        const date = now.toLocaleDateString('ta-IN', {
+          day: '2-digit', month: '2-digit', year: 'numeric'
+        });
+
+        // Format time as HH:MM:SS
+        const time = now.toLocaleTimeString('ta-IN', {
+          hour: '2-digit', minute: '2-digit', second: '2-digit'
+        });
+
+        $('#showdate').text(date);
+        $('#showTime').text(time);
+      }
+
+      // Run immediately & then every second
+      updateDateTime();
+      setInterval(updateDateTime, 1000);
+
+      // 📍 Get User Location
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            $('#user_lat').text(`Lat: ${position.coords.latitude.toFixed(4)}`);
+            $('#user_long').text(`Long: ${position.coords.longitude.toFixed(4)}`);
+            $('#accuracy').text(`±${position.coords.accuracy.toFixed(0)}m`);
+          },
+          function (error) {
+            $('#user_lat').text('Lat: N/A');
+            $('#user_long').text('Long: N/A');
+            $('#accuracy').text('');
+            console.error('Location Error:', error.message);
+          },
+          { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+        );
+      } else {
+        $('#user_lat').text('GPS Not Supported');
+      }
+
+    });
+  </script>
+  <!-- date,time,lat,lon -->
+
+  <!-- ✅ JS -->
+  <script>
+    document.querySelectorAll('.toggle-family').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.card');
+        const familySection = card.querySelector('.family-section');
+        const deleteSection = card.querySelector('.delete-section');
+
+        // hide delete section if open
+        slideUp(deleteSection);
+        // toggle family section
+        if (familySection.classList.contains('show')) {
+          slideUp(familySection);
+        } else {
+          slideDown(familySection);
+        }
+      });
+    });
+
+    document.querySelectorAll('.toggle-delete').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.card');
+        const deleteSection = card.querySelector('.delete-section');
+        const familySection = card.querySelector('.family-section');
+
+        slideUp(familySection);
+        if (deleteSection.classList.contains('show')) {
+          slideUp(deleteSection);
+        } else {
+          slideDown(deleteSection);
+        }
+      });
+    });
+
+    // close buttons
+    document.querySelectorAll('.btn-close-section').forEach(closeBtn => {
+      closeBtn.addEventListener('click', () => {
+        const section = closeBtn.closest('.collapse-section');
+        slideUp(section);
+      });
+    });
+
+    /* ✅ Helper slide functions */
+    function slideDown(element) {
+      element.style.display = 'block';
+      const height = element.scrollHeight + 'px';
+      element.style.height = '0';
+      element.classList.add('show');
+      requestAnimationFrame(() => {
+        element.style.height = height;
+      });
+      element.addEventListener('transitionend', function handler() {
+        element.style.height = 'auto';
+        element.removeEventListener('transitionend', handler);
+      });
+    }
+
+    function slideUp(element) {
+      if (!element.classList.contains('show')) return;
+      const height = element.scrollHeight + 'px';
+      element.style.height = height;
+      requestAnimationFrame(() => {
+        element.style.height = '0';
+      });
+      element.addEventListener('transitionend', function handler() {
+        element.classList.remove('show');
+        element.style.display = '';
+        element.removeEventListener('transitionend', handler);
+      });
+    }
+  </script>
+
+</body>
+
+</html>
