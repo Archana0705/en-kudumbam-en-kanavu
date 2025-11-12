@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
+  <!-- Bootstrap CSS -->
+  <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <!-- font awesome CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap-icons/bootstrap-icons.css">
+  <!-- sweetalert -->
+  <link rel="stylesheet" href="assets/vendor/sweetalert2/css/sweetalert.min.css" />
+  <link rel="stylesheet" href="assets/vendor/sweetalert2/css/sweetalert2.min.css" />
+  <!-- general CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/css/dashboardstyle.css">
+  <title id="application_title">மாநில குடும்பத் தரவு - சரிபார்த்தல் மற்றும் உறுதிப்படுத்துதல் - Tamil Nadu</title>
+  <!-- ✅ Styles -->
+  <style>
+    .mainclass {
+      display: flex;
+      align-items: center;
+      height: 93vh !important;
+      /* background-color: #d8efed; */
+    }
+
+    .font-13 {
+      font-size: 13px;
+    }
+
+    .cpointer {
+      cursor: pointer;
+    }
+
+    .shadow-sm {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .family-section p {
+      font-size: 14px;
+      color: #00796B !important;
+    }
+
+    .delete-section select,
+    .delete-section textarea {
+      font-size: 14px;
+    }
+
+    .btn:focus {
+      box-shadow: none !important;
+    }
+
+    .btn-close-section {
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-close-section:hover {
+      opacity: 1;
+      color: #000;
+    }
+
+    .collapse-section {
+      height: 0;
+      opacity: 0;
+      overflow: hidden;
+      padding: 0 !important;
+      margin-top: 0 !important;
+      transition: height 0.35s ease, opacity 0.35s ease;
+    }
+
+    .collapse-section.show {
+      opacity: 1;
+      padding: 1rem !important;
+      margin-top: 0.75rem !important;
+    }
+  </style>
+  <style type="text/css">
+    .font12 {
+      font-size: 12px;
+    }
+
+    #itemSearch::placeholder {
+      font-size: 10.5px;
+      color: #999;
+    }
+
+    .font-13 {
+      font-size: 15px !important;
+    }
+
+    .font-11 {
+      font-size: 11px;
+    }
+
+    .searchbox input.form-control {
+      background: #fff !important;
+    }
+
+    .searchbox .input-group-text {
+      color: #fff;
+      background-color: #00796B !important;
+    }
+
+    .bggradient {
+      /*      background: linear-gradient(to right, rgb(25 30 94), rgb(34 70 129));*/
+      background: linear-gradient(to right, rgb(201 245 242), rgb(209 246 243));
+    }
+
+    .bgclosegradient {
+      background: linear-gradient(to right, rgb(255, 235, 200), rgb(255, 210, 160));
+    }
+
+    #myTab button {
+      font-size: 14px !important;
+    }
+  </style>
+</head>
+
+<body class="d-flex flex-column h-100 bg-login">
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-black-view pt-2 pb-2">
+      <div class="container-fluid w-100 d-block text-center">
+        <div class="col-lg-12 banner-left1 d-flex">
+          <a href="#" class="text-white text-none px-2 font13 d-flex justify-content-center align-items-center">
+            <img src="assets/img/logo.png" class="img-fluid mainlogo" alt="logo">
+          </a>
+
+          <a href="#" class="text-white text-none px-2 font-15 w-75">
+            <b> <span class="txt-orange d-block">என் குடும்பம்</span>
+              <small class="waviy">
+                <span style="--i:1">எ</span>
+                <span style="--i:2">ன்</span>
+                <span style="--i:3"></span>
+                <span style="--i:4">க</span>
+                <span style="--i:5">ன</span>
+                <span style="--i:6">வு</span>
+                <span style="--i:7"></span>
+                <span style="--i:8">2</span>
+                <span style="--i:8">0</span>
+                <span style="--i:9">3</span>
+                <span style="--i:10">0</span>
+              </small>
+            </b>
+          </a>
+          <a data-bs-toggle="offcanvas" data-bs-target=".logout"
+            class="cpointer text-white text-none px-2 icon-out d-none">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- <div id="preloader"></div> -->
+  <!-- Begin page content -->
+  <main class="flex-shrink-0 h-100 main-space mainclass">
+    <div class="container-fluid box-layout mt-0">
+      <div class="col-lg-12">
+        <!-- 🔹 Entry Type Selection Screen -->
+        <div>
+          <div class="shadow-sm p-1 rounded-4">
+            <p class="mild-color mb-2 font15">
+              <i class="bi bi-ui-checks-grid me-2"></i> பதிவு முறையைத் தேர்ந்தெடுக்கவும்
+            </p>
+            <!-- Step 1: Dropdown -->
+            <div class="mb-2">
+              <label class="form-label fw-semibold small text-muted">பதிவு முறை (Entry Mode)</label>
+              <select class="form-select mb-2" aria-label="Default select example" id="entryType" name="entryType">
+                <option selected disabled>தேர்வு செய்யவும்...</option>
+                <option value="shopwise">கடை அடிப்படையில் (Shopwise)</option>
+                <option value="manual">கையேடு பதிவு (Manual Entry)</option>
+              </select>
+            </div>
+
+
+            <!-- Step 2: Manual Entry Options -->
+            <div id="manualOptions" class="mt-1" style="display:none;">
+              <label class="form-label fw-semibold small text-muted">கையேடு பதிவு விருப்பம் (Manual Entry
+                Type)</label>
+              <div class="d-flex gap-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="manualType" id="withCard" value="with">
+                  <label class="form-check-label" for="withCard">ரேஷன் கார்டுடன்</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="manualType" id="withoutCard" value="without">
+                  <label class="form-check-label" for="withoutCard">ரேஷன் கார்டில்லாமல்</label>
+                </div>
+              </div>
+
+              <!-- Step 3: Ration Card Validation (Hidden initially) -->
+              <div id="rationCardSection" class="border rounded-3 p-3 mt-3 bg-light" style="display:none;">
+                <label for="ufcInput" class="form-label small text-muted mb-1">UFC / ரேஷன் கார்டு எண்</label>
+                <div class="input-group">
+                  <input type="text" id="ufcInput" class="form-control form-control-sm"
+                    placeholder="UFC எண்ணை உள்ளிடவும்" maxlength="12">
+                  <button class="btn btn-outline-primary btn-sm" id="verifyBtn" type="button">Verify</button>
+                </div>
+                <div id="ufcErrorMsg" class="text-danger small mt-2" style="display:none;">
+                  12 இலக்க UFC எண்ணை சரியாக உள்ளிடவும்.
+                </div>
+                <div id="ufcSuccessMsg" class="text-success small mt-2" style="display:none;">
+                  ✅ UFC எண் சரியாக உள்ளது. தொடரப்படுகிறது...
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Optional info card -->
+            <div id="infoCard" class="alert alert-info small mt-3 text-muted" style="display:none;">
+              தயவுசெய்து பதிவுமுறையைத் தேர்ந்தெடுக்கவும்.
+            </div>
+          </div>
+        </div>
+
+        <!-- ✅ Script -->
+
+
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer mt-auto text-center">
+    <div class="container-fluid">
+      <div class="text-center">
+        <div class="mt-1 mb-0">
+
+          <p class="info-icons mb-0 nomargin">
+            <i class="bi bi-calendar-check font12"></i>
+            <span id="showdate" class="font12"></span>
+            <i class="bi bi-clock font12"></i>
+            <span id="showTime" class="mx-1 font12"></span>
+            <span id="user_lat" class="mx-1 font12"></span>
+            <span id="user_long" class="font12"></span>
+            <span id="accuracy" class="mx-1 font12"></span>
+          </p>
+          <p class="mb-0 font10 footer-data">
+            <i class="bi bi-person-check-fill font9"></i><span id="user_name" class="mx-1 font9">UserName</span><i
+              class="bi bi-telephone-forward font9"></i><span id="mobile_number" class="mx-1 font9">9876543210</span>
+            <span class="mx-1 font9" id="version_name">V2.0.0</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="offcanvas offcanvas-bottom logout" tabindex="-1" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas-header py-2">
+      <h5 class="offcanvas-title" id="offcanvasBottomLabel">Quick Menus</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body small py-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link font-14 font6" aria-current="page" href="index.html"><i
+              class="bi bi-arrow-right-circle"></i> Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <div class="position-fixed bottom-0 end-0 p-3 w-100 justify-content-center d-flex" style="z-index: 1080;">
+    <div id="ackToast" class="toast align-items-center text-white bg-success border-0 shadow-lg fade" role="alert"
+      aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="ackMessage">
+          <!-- Toast text dynamically inserted here -->
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery -->
+  <script src="assets/scripts/jquery/jquery.min.js"></script>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="assets/scripts/bootstrap/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function () {
+
+      // 🕒 Update Date & Time
+      function updateDateTime() {
+        const now = new Date();
+
+        // Format date as DD-MM-YYYY
+        const date = now.toLocaleDateString('ta-IN', {
+          day: '2-digit', month: '2-digit', year: 'numeric'
+        });
+
+        // Format time as HH:MM:SS
+        const time = now.toLocaleTimeString('ta-IN', {
+          hour: '2-digit', minute: '2-digit', second: '2-digit'
+        });
+
+        $('#showdate').text(date);
+        $('#showTime').text(time);
+      }
+
+      // Run immediately & then every second
+      updateDateTime();
+      setInterval(updateDateTime, 1000);
+
+      // 📍 Get User Location
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            $('#user_lat').text(`Lat: ${position.coords.latitude.toFixed(4)}`);
+            $('#user_long').text(`Long: ${position.coords.longitude.toFixed(4)}`);
+            $('#accuracy').text(`±${position.coords.accuracy.toFixed(0)}m`);
+          },
+          function (error) {
+            $('#user_lat').text('Lat: N/A');
+            $('#user_long').text('Long: N/A');
+            $('#accuracy').text('');
+            console.error('Location Error:', error.message);
+          },
+          { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+        );
+      } else {
+        $('#user_lat').text('GPS Not Supported');
+      }
+
+    });
+  </script>
+  <!-- date,time,lat,lon -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const entryType = document.getElementById("entryType");
+      const manualOptions = document.getElementById("manualOptions");
+      const withCard = document.getElementById("withCard");
+      const withoutCard = document.getElementById("withoutCard");
+      const rationCardSection = document.getElementById("rationCardSection");
+      const verifyUfcBtn = document.getElementById("verifyUfcBtn");
+      const ufcInput = document.getElementById("ufcInput");
+      const ufcSuccessMsg = document.getElementById("ufcSuccessMsg");
+
+      // Step 1: Handle main dropdown
+      entryType.addEventListener("change", () => {
+        const selected = entryType.value;
+        if (selected === "shopwise") {
+          // Navigate directly
+          window.location.href = "details.html";
+        } else if (selected === "manual") {
+          manualOptions.style.display = "block";
+          rationCardSection.style.display = "none";
+        }
+      });
+
+      // Step 2: Manual type selection
+      withCard.addEventListener("change", () => {
+        rationCardSection.style.display = "block";
+        ufcSuccessMsg.style.display = "none";
+      });
+
+      withoutCard.addEventListener("change", () => {
+        rationCardSection.style.display = "none";
+        window.location.href = "details-new.html";
+      });
+
+      // Step 3: Verify UFC number and navigate
+      verifyUfcBtn.addEventListener("click", () => {
+        const ufcValue = ufcInput.value.trim();
+
+        if (ufcValue.length < 6) {
+          alert("சரியான UFC எண்ணை உள்ளிடவும்.");
+          return;
+        }
+
+        // Show success message
+        ufcSuccessMsg.style.display = "block";
+
+        // Simulate verification + navigation delay
+        setTimeout(() => {
+          window.location.href = "details.html";
+        }, 1200);
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const entryType = document.getElementById("entryType");
+      const manualOptions = document.getElementById("manualOptions");
+      const rationCardSection = document.getElementById("rationCardSection");
+      const verifyBtn = document.getElementById("verifyBtn");
+      const ufcInput = document.getElementById("ufcInput");
+      const errorMsg = document.getElementById("ufcErrorMsg");
+      const successMsg = document.getElementById("ufcSuccessMsg");
+
+      // ✅ Always reset fields on load or when navigating back
+      window.addEventListener("pageshow", function (event) {
+        if (event.persisted || performance.navigation.type === 2) {
+          resetFormFields();
+        } else {
+          resetFormFields();
+        }
+      });
+
+      function resetFormFields() {
+        entryType.value = "தேர்வு செய்யவும்...";
+        manualOptions.style.display = "none";
+        rationCardSection.style.display = "none";
+        document.querySelectorAll('input[name="manualType"]').forEach(el => el.checked = false);
+        ufcInput.value = "";
+        errorMsg.style.display = "none";
+        successMsg.style.display = "none";
+      }
+
+      // 🔹 Handle entry mode selection
+      entryType.addEventListener("change", function () {
+        if (this.value === "manual") {
+          manualOptions.style.display = "block";
+        } else {
+          manualOptions.style.display = "none";
+          rationCardSection.style.display = "none";
+        }
+      });
+
+      // 🔹 Show ration card section when "withCard" selected
+      document.getElementById("withCard").addEventListener("change", () => {
+        rationCardSection.style.display = "block";
+      });
+
+      // 🔹 Hide ration card section when "withoutCard" selected
+      document.getElementById("withoutCard").addEventListener("change", () => {
+        rationCardSection.style.display = "none";
+      });
+
+      // 🔹 Verify button click
+      verifyBtn.addEventListener("click", function () {
+        const ufcValue = ufcInput.value.trim();
+
+        // ✅ Validate 12-digit number
+        if (!/^\d{12}$/.test(ufcValue)) {
+          errorMsg.style.display = "block";
+          successMsg.style.display = "none";
+          ufcInput.classList.add("is-invalid");
+          return;
+        }
+
+        // ✅ Success UI
+        errorMsg.style.display = "none";
+        ufcInput.classList.remove("is-invalid");
+        successMsg.style.display = "block";
+
+        // ✅ Toast setup
+        const ackMessage = document.getElementById("ackMessage");
+        ackMessage.innerHTML = `
+        <i class="bi bi-check-circle-fill me-1"></i>
+        <strong>UFC Verified Successfully!</strong><br/>
+      `;
+
+        const toastEl = document.getElementById("ackToast");
+        const toast = new bootstrap.Toast(toastEl, { delay: 2000 });
+        toast.show();
+
+        // ✅ Navigate after 1 second
+        setTimeout(() => {
+          window.location.href = 'withoutration.html';
+        }, 1000);
+      });
+    });
+  </script>
+
+
+  <!-- ✅ JS -->
+
+
+</body>
+
+</html>

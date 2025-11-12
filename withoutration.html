@@ -1145,8 +1145,6 @@
         line-height: 0px;
       }
 
-
-
       .labelselected {
         background: #fff3cd;
         border-radius: 6px;
@@ -1729,8 +1727,8 @@
                 <label class="form-label fw-semibold small mb-1">கைப்பேசி எண்ணை புதுப்பிக்கவும்</label>
                 <div class="input-group input-group-sm">
                   <!-- Mobile number + unverified together -->
-                  <input type="number" maxlength="10" class="form-control form-control-sm" id="mobileInput"
-                    value="எண்ணை உள்ளிடவும்">
+                  <input type="number" maxlength="10" class="form-control form-control-sm" id="mobileInput" value=""
+                    placeholder="எண்ணை உள்ளிடவும்">
                   <!-- Clickable text to trigger verification -->
                   <button class="btn btn-outline-primary btn-sm" id="verifyBtn" type="button">
                     <!-- <i class="bi bi-arrow-right-circle-fill text-success"></i> -->
@@ -1742,6 +1740,7 @@
                   </span>
                 </div>
               </div>
+             
             </div>
             <div class="text-end mt-4">
               <button class="btn btn-primary default-padding font-14 cus-btns py-1" onclick="nextTab(2)">Next <i

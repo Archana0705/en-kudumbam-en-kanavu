@@ -14,6 +14,10 @@
    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
    <title id="application_title">மாநில குடும்பத் தரவு - சரிபார்த்தல் மற்றும் உறுதிப்படுத்துதல்</title>
    <style>
+      .font15 {
+         font-size: 15px !important;
+      }
+
       /* Chrome * Safari */
       input[type="number"]::-webkit-inner-spin-button {
          display: none;
@@ -109,88 +113,66 @@
 
          <div class="col-lg-12">
 
-            <div class="logo-section">
-               <h2 class="otp-txt">OTP <span class="d-block">Verification</span></h2>
-               <p class="logo-des font13 text-white1 mild-color">We have sent you a 4 digit verification code to the
-                  <span id="mobile_number"></span>
-               <p>
-            </div>
-            <div class="get-infos">
-               <div class="container-fluid j-initial row t-left mb-2">
+            <!-- 🔹 Entry Type Selection Screen -->
+            <div class="mt-4">
+               <div class="card border-0 shadow-sm p-4 rounded-4">
+                  <p class="mild-color mb-2 font15">
+                     <i class="bi bi-ui-checks-grid me-2"></i> பதிவு முறையைத் தேர்ந்தெடுக்கவும்
+                  </p>
+                  <!-- Step 1: Dropdown -->
+                  <div class="mb-2">
+                     <label class="form-label fw-semibold small text-muted">பதிவு முறை (Entry Mode)</label>
+                     <select class="form-select mb-2" aria-label="Default select example" id="entryType"
+                        name="entryType">
+                        <option selected disabled>தேர்வு செய்யவும்...</option>
+                        <option value="shopwise">கடை அடிப்படையில் (Shopwise)</option>
+                        <option value="manual">கையேடு பதிவு (Manual Entry)</option>
+                     </select>
+                  </div>
+
+
+                  <!-- Step 2: Manual Entry Options -->
+                  <div id="manualOptions" class="mt-1" style="display:none;">
+                     <label class="form-label fw-semibold small text-muted">கையேடு பதிவு விருப்பம் (Manual Entry
+                        Type)</label>
+                     <div class="d-flex gap-3">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="manualType" id="withCard" value="with">
+                           <label class="form-check-label" for="withCard">ரேஷன் கார்டுடன்</label>
+                        </div>
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="manualType" id="withoutCard"
+                              value="without">
+                           <label class="form-check-label" for="withoutCard">ரேஷன் கார்டில்லாமல்</label>
+                        </div>
+                     </div>
+
+                     <!-- Step 3: Ration Card Validation (Hidden initially) -->
+                     <div id="rationCardSection" class="border rounded-3 p-3 mt-3 bg-light" style="display:none;">
+                        <label for="ufcInput" class="form-label small text-muted mb-1">UFC / ரேஷன் கார்டு எண்</label>
+                        <div class="input-group">
+                           <input type="text" id="ufcInput" class="form-control form-control-sm"
+                              placeholder="UFC எண்ணை உள்ளிடவும்">
+                           <button id="verifyUfcBtn" class="btn btn-outline-success btn-sm">
+                              <i class="bi bi-check-circle"></i> சரிபார்க்கவும்
+                           </button>
+                        </div>
+                        <div id="ufcSuccessMsg" class="text-success small mt-2" style="display:none;">
+                           ✅ UFC எண் சரியாக உள்ளது. தொடரப்படுகிறது...
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- Optional info card -->
+                  <div id="infoCard" class="alert alert-info small mt-3 text-muted" style="display:none;">
+                     தயவுசெய்து பதிவுமுறையைத் தேர்ந்தெடுக்கவும்.
+                  </div>
                </div>
             </div>
 
-            <div class="submit-no">
-               <!-- <div class="d-flex justify-content-center otp-value">
-                  <div class="">
-                     <input type="number" class="form-control text-center text-white" name="otp_1" id="otp_1"
-                        pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;" data-next="otp_2"
-                        autofocus inputmode="numeric">
-                  </div>
-                  <div class="mx-1">
-                     <input type="number" class="form-control text-center text-white" name="otp_2" id="otp_2"
-                        pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;" data-next="otp_3"
-                        data-previous="otp_1" inputmode="numeric">
-                  </div>
-                  <div class="">
-                     <input type="number" class="form-control text-center text-white" name="otp_3" id="otp_3"
-                        pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;" data-next="otp_4"
-                        data-previous="otp_2" inputmode="numeric">
-                  </div>
-                  <div class="mx-1">
-                     <input type="number" class="form-control text-center text-white" name="otp_4" id="otp_4"
-                        pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;"
-                        data-previous="otp_3" inputmode="numeric">
-                  </div>
-               </div> -->
-
-               <div class="d-flex justify-content-center otp-value">
-                  <div>
-                     <input type="number" class="form-control text-center text-white" name="otp_1" id="otp_1"
-                        maxlength="1" data-next="otp_2" autofocus inputmode="numeric">
-                  </div>
-                  <div class="mx-1">
-                     <input type="number" class="form-control text-center text-white" name="otp_2" id="otp_2"
-                        maxlength="1" data-next="otp_3" data-previous="otp_1" inputmode="numeric">
-                  </div>
-                  <div>
-                     <input type="number" class="form-control text-center text-white" name="otp_3" id="otp_3"
-                        maxlength="1" data-next="otp_4" data-previous="otp_2" inputmode="numeric">
-                  </div>
-                  <div class="mx-1">
-                     <input type="number" class="form-control text-center text-white" name="otp_4" id="otp_4"
-                        maxlength="1" data-previous="otp_3" inputmode="numeric">
-                  </div>
-               </div>
+            <!-- ✅ Script -->
 
 
-               <!-- <a href="details.html" class="btn btn-success d-block bg-btn-green my-2"
-                  onclick="verifyOTP()">Continue -->
-               <a href="user-selection.html" class="btn btn-success d-block bg-btn-green my-2">Continue
-                  <span class="arrow">
-                     <span></span>
-                     <span></span>
-                     <span></span>
-                  </span>
-               </a>
-            </div>
-            <div class="otp-info text-center">
-               <a href="javascript:void(0);" class="d-block deco-none font13 text-white1 mild-color">Didn’t receive
-                  it?</a>
-               <a href="javascript:void(0);" class="d-block deco-none font13 text-white1 mild-color"
-                  onclick="resendOTP()"><i class="bi bi-repeat"></i>
-                  Re-Send
-                  OTP</a>
-            </div>
-            <div class="col-lg-12 mt-4 d-none">
-               <div class="alert alert-danger blinkAlert blink py-1" role="alert">
-                  <b>IT IS ONLY FOR DEMO</b>
-               </div>
-            </div>
-
-
-            <input hidden id="device_id" value="">
-            <input hidden id="device_modal" value="">
          </div>
       </div>
 
@@ -401,6 +383,59 @@
             // Prevent scroll on number input
             $('input[type=number]').on('wheel', function (e) {
                $(this).blur();
+            });
+         });
+      </script>
+      <script>
+         document.addEventListener("DOMContentLoaded", () => {
+            const entryType = document.getElementById("entryType");
+            const manualOptions = document.getElementById("manualOptions");
+            const withCard = document.getElementById("withCard");
+            const withoutCard = document.getElementById("withoutCard");
+            const rationCardSection = document.getElementById("rationCardSection");
+            const verifyUfcBtn = document.getElementById("verifyUfcBtn");
+            const ufcInput = document.getElementById("ufcInput");
+            const ufcSuccessMsg = document.getElementById("ufcSuccessMsg");
+
+            // Step 1: Handle main dropdown
+            entryType.addEventListener("change", () => {
+               const selected = entryType.value;
+               if (selected === "shopwise") {
+                  // Navigate directly
+                  window.location.href = "details.html";
+               } else if (selected === "manual") {
+                  manualOptions.style.display = "block";
+                  rationCardSection.style.display = "none";
+               }
+            });
+
+            // Step 2: Manual type selection
+            withCard.addEventListener("change", () => {
+               rationCardSection.style.display = "block";
+               ufcSuccessMsg.style.display = "none";
+            });
+
+            withoutCard.addEventListener("change", () => {
+               rationCardSection.style.display = "none";
+               window.location.href = "details-new.html";
+            });
+
+            // Step 3: Verify UFC number and navigate
+            verifyUfcBtn.addEventListener("click", () => {
+               const ufcValue = ufcInput.value.trim();
+
+               if (ufcValue.length < 6) {
+                  alert("சரியான UFC எண்ணை உள்ளிடவும்.");
+                  return;
+               }
+
+               // Show success message
+               ufcSuccessMsg.style.display = "block";
+
+               // Simulate verification + navigation delay
+               setTimeout(() => {
+                  window.location.href = "details.html";
+               }, 1200);
             });
          });
       </script>
