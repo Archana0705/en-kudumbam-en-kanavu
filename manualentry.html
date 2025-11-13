@@ -1300,13 +1300,13 @@
             <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button"
               role="tab">2. Schemes Availed</button>
           </li>
-          <li class="nav-item mb-2">
+          <!-- <li class="nav-item mb-2">
             <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button"
               role="tab">3. Eligible Schemes</button>
-          </li>
+          </li> -->
           <li class="nav-item mb-2 mx-2">
             <button class="nav-link" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button"
-              role="tab">4. குடும்ப கனவு 2030</button>
+              role="tab">3. குடும்ப கனவு 2030</button>
           </li>
         </ul>
         <div class="tab-content" id="surveyTabsContent">
@@ -2204,230 +2204,132 @@
                   3
                   திட்டங்கள்)</span>
               </p>
-              <!-- Plan Container -->
+
               <div id="plansContainer">
-                <!-- One initial plan -->
-                <div class="plan-entry border rounded-3 p-3 mb-3 bg-light">
+                <!-- First Plan (default) -->
+                <div class="card border shadow-sm p-3 mb-3 rounded-4 plan-entry">
                   <div class="d-flex justify-content-between align-items-center mb-2">
-                    <p class="txt-blue mb-1 font15">திட்டம் <span class="plan-number">1</span></p>
-                    <button type="button" class="btn-close btn-sm remove-plan"></button>
-                  </div>
-                  <!-- Buttons replacing radio -->
-                  <div class="d-flex gap-2 mb-3 justify-content-between text-center plan-options">
-                    <!-- Button 1 -->
-                    <button type="button" class="btn btn-outline-success flex-fill rounded-4 option-btn py-3"
-                      data-value="family">
-                      <i class="bi bi-house-door-fill fs-4 d-block mb-1"></i>
-                      <span class="fw-semibold small">குடும்ப மேம்பாட்டு திட்டம்</span>
-                    </button>
-                    <!-- Button 2 -->
-                    <button type="button" class="btn btn-outline-primary flex-fill rounded-4 option-btn py-3"
-                      data-value="members">
-                      <i class="bi bi-people-fill fs-4 d-block mb-1"></i>
-                      <span class="fw-semibold small">உறுப்பினர் மேம்பாட்டு திட்டம்</span>
+                    <h6 class="fw-semibold text-muted">திட்டம் <span class="plan-number">1</span></h6>
+                    <button type="button" class="btn btn-sm btn-outline-danger rounded-3 remove-plan">
+                      <i class="bi bi-x-circle"></i> நீக்கு
                     </button>
                   </div>
-                  <!-- Dynamic Fields -->
                   <div class="plan-fields fade-in"></div>
                 </div>
               </div>
+
               <!-- Add More Button -->
-              <div class="mt-2 text-end">
+              <div class="text-end mb-1">
                 <button id="addPlanBtn" class="btn btn-outline-primary btn-sm rounded-pill">
                   <i class="bi bi-plus-circle me-1"></i> மேலும் ஒரு திட்டத்தைச் சேர்க்கவும்
                 </button>
               </div>
-            </div>
-            <!-- Hidden Template -->
-            <script type="text/template" id="planTemplate">
-                <div class="plan-entry border rounded-3 p-3 mb-3 bg-light">
-                  <div class="d-flex justify-content-between align-items-center mb-2">
-                    <p class="txt-blue mb-1 font15">திட்டம் <span class="plan-number"></span></p>
-                    <button type="button" class="btn-close btn-sm remove-plan"></button>
-                  </div>
-                
-                  <!-- Updated modern buttons -->
-                  <div class="d-flex gap-2 mb-3 justify-content-between text-center plan-options">
-                    <button type="button" class="btn btn-outline-success flex-fill rounded-4 option-btn py-3" data-value="family">
-                      <i class="bi bi-house-door-fill fs-4 d-block mb-1"></i>
-                      <span class="fw-semibold small">குடும்ப மேம்பாட்டு திட்டம்</span>
-                    </button>
-                    <button type="button" class="btn btn-outline-primary flex-fill rounded-4 option-btn py-3" data-value="members">
-                      <i class="bi bi-people-fill fs-4 d-block mb-1"></i>
-                      <span class="fw-semibold small">உறுப்பினர் மேம்பாட்டு திட்டம்</span>
-                    </button>
-                  </div>
-                
-                  <div class="plan-fields fade-in"></div>
-                </div>
-              </script>
-            <div class="offcanvas offcanvas-bottom verifyMob" tabindex="-1" id="offcanvasBottom"
-              aria-labelledby="offcanvasBottomLabel">
-              <div class="offcanvas-header">
-                <h6 class="offcanvas-title"><i class="bi bi-shield-lock-fill me-1"></i> Verify Mobile
-                </h6>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                  aria-label="Close"></button>
-              </div>
-              <div class="offcanvas-body small py-2">
-                <p class="mb-2">Enter the 4-digit OTP sent to your number.</p>
-                <div class="d-flex justify-content-center gap-2 mb-3">
-                  <input type="number" class="form-control text-center otp-input" maxlength="1">
-                  <input type="number" class="form-control text-center otp-input" maxlength="1">
-                  <input type="number" class="form-control text-center otp-input" maxlength="1">
-                  <input type="number" class="form-control text-center otp-input" maxlength="1">
-                </div>
-                <div class="text-end">
-                  <button class="btn btn-success btn-sm rounded-pill px-3" id="submitOtp">
-                    <i class="bi bi-check-circle me-1"></i> Submit
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12 mt-3" role="main">
-              <p class="txt-blue mb-1 font15">விண்ணப்பம் மற்றும் குறியீடு</p>
-              <!-- <p class="font14">பகிர்வதற்கு மொபைல் காமராவிலிருந்து 3 ஸ்கிரீன்-ஷாட்கள் மற்றும் ஒரு QR படத்தை கைது செய்யவும்.</p> -->
-              <!-- three screenshot placeholders -->
-              <!-- <div class="screenshot-grid">
-                  <div class="screenshot small" aria-label="screenshot 1">
-                    <div class="bar" aria-hidden="true"></div>
-                    <img src="assets/img/logo.png" class="img-fluid mainlogo1" alt="logo">
-                  </div>
-                  
-                  <div class="screenshot small" aria-label="screenshot 1">
-                    <div class="bar" aria-hidden="true"></div>
-                    <img src="assets/img/logo.png" class="img-fluid mainlogo1" alt="logo">
-                  </div>
-                  
-                  <div class="screenshot small" aria-label="screenshot 1">
-                    <div class="bar" aria-hidden="true"></div>
-                    <img src="assets/img/logo.png" class="img-fluid mainlogo1" alt="logo">
-                  </div>
-                  
-                  <div class="screenshot small" aria-label="screenshot 1">
-                    <div class="bar" aria-hidden="true"></div>
-                    <img src="assets/img/logo.png" class="img-fluid mainlogo1" alt="logo">
-                  </div>
-                  
-                  
-                  
-                  </div> -->
-              <!-- QR + upload -->
-              <div class="qr-area align-items-center" style="display:flex;gap:12px;align-items:center;">
 
-                <!-- QR Preview Box -->
+              <!-- Hidden Template -->
+              <script type="text/template" id="planTemplate">
+  <div class="card shadow-sm p-3 mb-3 rounded-4 plan-entry">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h6 class="fw-semibold text-muted">திட்டம் <span class="plan-number"></span></h6>
+      <button type="button" class="btn btn-sm btn-outline-danger rounded-3 remove-plan">
+        <i class="bi bi-x-circle"></i> நீக்கு
+      </button>
+    </div>
+    <div class="plan-fields fade-in"></div>
+  </div>
+</script>
+              <div class="offcanvas offcanvas-bottom verifyMob" tabindex="-1" id="offcanvasBottom"
+                aria-labelledby="offcanvasBottomLabel">
+                <div class="offcanvas-header">
+                  <h6 class="offcanvas-title"><i class="bi bi-shield-lock-fill me-1"></i> Verify Mobile
+                  </h6>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body small py-2">
+                  <p class="mb-2">Enter the 4-digit OTP sent to your number.</p>
+                  <div class="d-flex justify-content-center gap-2 mb-3">
+                    <input type="number" class="form-control text-center otp-input" maxlength="1">
+                    <input type="number" class="form-control text-center otp-input" maxlength="1">
+                    <input type="number" class="form-control text-center otp-input" maxlength="1">
+                    <input type="number" class="form-control text-center otp-input" maxlength="1">
+                  </div>
+                  <div class="text-end">
+                    <button class="btn btn-success btn-sm rounded-pill px-3" id="submitOtp">
+                      <i class="bi bi-check-circle me-1"></i> Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 mt-3" role="main">
+                <p class="txt-blue mb-1 font15">விண்ணப்பம்</p>
+
+                <!-- <div class="qr-area align-items-center" style="display:flex;gap:12px;align-items:center;">
+
                 <div class="qr-box position-relative" style="width:110px;height:110px;">
                   <img id="qrPreview" src="assets/img/qr.jpeg" alt="QR Preview" class="img-fluid"
                     style="width:100%;height:100%;border-radius:8px;object-fit:cover;border:1px solid #ddd;">
                 </div>
 
-                <!-- Right Section -->
                 <div style="flex:1;">
-                  <!-- Capture QR Image -->
                   <button id="captureQrBtn" class="btn btn-outline-success w-100 py-2 rounded-pill fw-semibold"
                     type="button" style="font-size:14px;">
                     📸 QR குறியீட்டை ஸ்கேன் செய்யவும்
                   </button>
 
-                  <!-- Hidden file input -->
                   <input type="file" id="qrCameraInput" accept="image/*" capture="environment" style="display:none;">
 
-                  <!-- QR Result Box -->
                   <div id="qrResultBox" class="mt-2" style="display:none;">
                     <input type="text" id="qrNumber"
                       class="form-control form-control-sm text-center fw-semibold border-success" maxlength="12"
                       placeholder="QR குறியீடு எண் காண்பிக்கப்படும்" value="789456231456">
                   </div>
                 </div>
-              </div>
-
-              <!-- QR Section -->
-              <!-- <div class="qr-area align-items-center" aria-hidden="false"
-                style="display:flex;gap:12px;align-items:center;">
-                <div class="qr-box" role="img" aria-label="sample qr code">
-                  <img src="assets/img/qr.jpeg" class="img-fluid mainlogo1" alt="QR Code"
-                    style="width:110px;height:110px;border-radius:8px;object-fit:cover;">
-                </div>
-                <div style="flex:1;">
-                  <button id="scanQrBtn" class="btn btn-outline-success w-100 py-2 rounded-pill fw-semibold"
-                    type="button" style="font-size:14px;">
-                    📱 QR குறியீட்டை ஸ்கேன் செய்யவும்
-                  </button>
-                  <div id="qrResultBox" class="mt-2" style="display:none;">
-                    <input type="text" id="qrNumber"
-                      class="form-control form-control-sm text-center fw-semibold border-success" maxlength="12"
-                      value="987654321012">
-                  </div>
-                </div>
               </div> -->
-              <!-- upload controls -->
-              <!--  <div class="controls">
-                  <input id="cameraInput" type="file" accept="image/*" capture="environment"
-                      style="display:none">
-                  
-                  
-                  </div> -->
-              <!--    <div class="card border-0 shadow-sm p-3">
+
+
+
+                <div class="card border-0 shadow-sm p-3">
                   <h6 class="txt-blue mb-2 font15">
                     <i class="bi bi-camera-fill me-1"></i> படம் எடுக்கவும் (Capture Image)
                   </h6>
-                  
-                  <div class="text-center">
-                    <button id="openCameraBtn" class="btn btn-outline-primary w-100 py-2 rounded-pill fw-semibold">
-                      📷 படம் எடுக்கவும்
-                    </button>
-                  
-                  
-                    <div id="imagePreview" class="row mt-3 g-2"></div>
-                  
-                    <div id="captureSuccess" class="alert alert-success py-2 px-3 mt-3 small d-none text-start">
-                      <i class="bi bi-check-circle-fill me-1"></i> படம் வெற்றிகரமாக பதிவேற்றப்பட்டது!
-                    </div>
-                  </div>
-                  </div> -->
 
-              <div class="card border-0 shadow-sm p-3">
-                <h6 class="txt-blue mb-2 font15">
-                  <i class="bi bi-camera-fill me-1"></i> படம் எடுக்கவும் (Capture Image)
-                </h6>
-
-                <div class="row text-center g-3" id="imageGrid">
-                  <div class="col-6">
-                    <div class="capture-slot border rounded-3 shadow-sm p-2" data-slot="1">
-                      <img src="assets/img/camera.png" class="placeholder" alt="Camera icon">
-                      <p class="small mb-0 mt-1 fw-semibold">பக்கம் 1</p>
+                  <div class="row text-center g-3" id="imageGrid">
+                    <div class="col-6">
+                      <div class="capture-slot border rounded-3 shadow-sm p-2" data-slot="1">
+                        <img src="assets/img/camera.png" class="placeholder" alt="Camera icon">
+                        <p class="small mb-0 mt-1 fw-semibold">பக்கம் 1</p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="col-6">
-                    <div class="capture-slot border rounded-3 shadow-sm p-2" data-slot="2">
-                      <img src="assets/img/camera.png" class="placeholder" alt="Camera icon">
-                      <p class="small mb-0 mt-1 fw-semibold">பக்கம் 2</p>
+                    <div class="col-6">
+                      <div class="capture-slot border rounded-3 shadow-sm p-2" data-slot="2">
+                        <img src="assets/img/camera.png" class="placeholder" alt="Camera icon">
+                        <p class="small mb-0 mt-1 fw-semibold">பக்கம் 2</p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="col-6">
-                    <div class="capture-slot border rounded-3 shadow-sm p-2" data-slot="3">
-                      <img src="assets/img/camera.png" class="placeholder" alt="Camera icon">
-                      <p class="small mb-0 mt-1 fw-semibold">பக்கம் 3</p>
+                    <div class="col-6">
+                      <div class="capture-slot border rounded-3 shadow-sm p-2" data-slot="3">
+                        <img src="assets/img/camera.png" class="placeholder" alt="Camera icon">
+                        <p class="small mb-0 mt-1 fw-semibold">பக்கம் 3</p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="col-6">
-                    <div class="capture-slot border rounded-3 shadow-sm p-2" data-slot="4">
-                      <img src="assets/img/camera.png" class="placeholder" alt="Camera icon">
-                      <p class="small mb-0 mt-1 fw-semibold">வீட்டின் முன்புறம்</p>
-                    </div>
+                    <!-- <div class="col-6">
+                      <div class="capture-slot border rounded-3 shadow-sm p-2" data-slot="4">
+                        <img src="assets/img/camera.png" class="placeholder" alt="Camera icon">
+                        <p class="small mb-0 mt-1 fw-semibold">வீட்டின் முன்புறம்</p>
+                      </div>
+                    </div> -->
                   </div>
                 </div>
-              </div>
 
 
-              <!--  <div class="card border-0 shadow-sm p-3">
+                <!--  <div class="card border-0 shadow-sm p-3">
                   <h6 class="txt-blue mb-2 font15">
                     <i class="bi bi-camera-fill me-1"></i> படம் எடுக்கவும் (Capture Image)
                   </h6> -->
-              <!-- <div class="text-center">
+                <!-- <div class="text-center">
                     <button id="openCameraBtn"
                       class="btn btn-outline-primary w-100 py-2 rounded-pill fw-semibold mb-2">
                     📷 படம் எடுக்கவும்
@@ -2447,9 +2349,9 @@
                       <i class="bi bi-check-circle-fill me-1"></i> படம் வெற்றிகரமாக பதிவேற்றப்பட்டது!
                     </div>
                   </div> -->
-              <!-- </div> -->
-              <!-- JS -->
-              <!--    <script>
+                <!-- </div> -->
+                <!-- JS -->
+                <!--    <script>
                   document.addEventListener("DOMContentLoaded", () => {
                       const pageSelect = document.getElementById("pageSelect");
                       const captureSection = document.getElementById("captureSection");
@@ -2475,8 +2377,8 @@
                       });
                   });
                 </script> -->
-              <!-- Style (optional, for better spacing on mobile) -->
-              <!--   <style>
+                <!-- Style (optional, for better spacing on mobile) -->
+                <!--   <style>
                   select,
                   button {
                   font-size: 14px;
@@ -2495,25 +2397,25 @@
                   }
                   }
                 </style> -->
-              <!-- preview of captured images -->
-              <!-- <div>
+                <!-- preview of captured images -->
+                <!-- <div>
                   <div style="font-weight:700; color:var(--accent); margin-bottom:8px">பட முன்னோட்டம்</div>
                   <div class="preview" id="preview"></div>
                   </div> -->
-            </div>
-            <!-- ✅ Consent Section -->
-            <div class="card border-0 shadow-sm p-3 mt-3 verifycheck">
-              <h6 class="fw-semibold text-success mb-2 f600">
-                <i class="bi bi-shield-check me-1"></i> ஒப்புகை (Consent)
-              </h6>
-              <div class="row g-2">
-                <!-- ✅ Verifier Name -->
-                <!-- <div class="col-md-12">
+              </div>
+              <!-- ✅ Consent Section -->
+              <div class="card border-0 shadow-sm p-3 mt-3 verifycheck">
+                <h6 class="fw-semibold text-success mb-2 f600">
+                  <i class="bi bi-shield-check me-1"></i> ஒப்புகை (Consent)
+                </h6>
+                <div class="row g-2">
+                  <!-- ✅ Verifier Name -->
+                  <!-- <div class="col-md-12">
                     <label class="form-label small fw-semibold text-muted mb-0">சரிபார்ப்பாளர் பெயர்</label>
                     <p class="mb-1 small text-dark fw-semibold">பயனர் பெயர்</p>
                     </div> -->
-                <!-- ✅ Aadhaar / Mobile -->
-                <!-- <div class="col-md-12 d-flex justify-content-between align-items-center">
+                  <!-- ✅ Aadhaar / Mobile -->
+                  <!-- <div class="col-md-12 d-flex justify-content-between align-items-center">
                     <div>
                       <label class="form-label small fw-semibold text-muted mb-0">ஆதார் / கைபேசி எண்</label>
                       <p class="mb-0 small text-dark fw-semibold">9876543210</p>
@@ -2521,54 +2423,54 @@
                     <i class="bi bi-arrow-right-circle-fill fs-5 text-success" data-bs-toggle="offcanvas"
                       data-bs-target=".verifyMob" role="button"></i>
                     </div> -->
-              </div>
-              <!-- ✅ Consent Checkbox Section -->
-              <div class="form-check mt-3">
-                <input class="form-check-input mt-1 me-2" type="checkbox" id="consentCheck">
-                <label class="form-check-label w-100" for="consentCheck">
-                  <p class="small mb-2 text-justify" style="line-height: 1.6;">
-                    நான் <span class="fw-semibold"><b>UserName</b></span>,
-                    <!-- என் குடும்பம் என் கனவு 2030 திட்டத்தின் கணக்கெடுப்பாளராக,
+                </div>
+                <!-- ✅ Consent Checkbox Section -->
+                <div class="form-check mt-3">
+                  <input class="form-check-input mt-1 me-2" type="checkbox" id="consentCheck">
+                  <label class="form-check-label w-100" for="consentCheck">
+                    <p class="small mb-2 text-justify" style="line-height: 1.6;">
+                      நான் <span class="fw-semibold"><b>UserName</b></span>,
+                      <!-- என் குடும்பம் என் கனவு 2030 திட்டத்தின் கணக்கெடுப்பாளராக,
                         <strong>சென்னை மாவட்டத்தைச்</strong> சேர்ந்தவர்.
                         திட்டத்தின் வழிகாட்டுதலின்படி, கீழே கொடுக்கப்பட்டுள்ள குடும்ப உறுப்பினர் பட்டியலில் இருந்து
                         ஒருவரைத் தேர்ந்தெடுத்து குடும்ப விவரங்கள் சேகரிக்கப்பட்டன: -->
-                    என் குடும்பம் என் கனவு திட்டத்தின் கணக்கெடுப்பாளராக, திட்டத்தின் விண்ணப்பப்
-                    படிவங்களை
-                    <strong>சென்னை மாவட்டத்தைச்</strong> சேர்ந்த
-                  </p>
-                  <div class="col-12 mb-2">
-                    <!-- <label class="form-label small fw-semibold text-muted">பயனாளியின் பெயர்</label> -->
-                    <select class="form-select form-select-sm w-100">
-                      <option selected disabled>Choose...</option>
-                      <option>Ramesh Kumar</option>
-                      <option>Lakshmi Devi</option>
-                      <option>Arun Kumar</option>
-                    </select>
-                  </div>
-                  <p class="small text-justify mb-0" style="line-height: 1.6;">
-                    <!-- உள்ளிடப்பட்ட தகவல்கள் அந்த குடும்ப உறுப்பினரால் சரிபார்க்கப்பட்டு,
+                      என் குடும்பம் என் கனவு திட்டத்தின் கணக்கெடுப்பாளராக, திட்டத்தின் விண்ணப்பப்
+                      படிவங்களை
+                      <strong>சென்னை மாவட்டத்தைச்</strong> சேர்ந்த
+                    </p>
+                    <div class="col-12 mb-2">
+                      <!-- <label class="form-label small fw-semibold text-muted">பயனாளியின் பெயர்</label> -->
+                      <select class="form-select form-select-sm w-100">
+                        <option selected disabled>Choose...</option>
+                        <option>Ramesh Kumar</option>
+                        <option>Lakshmi Devi</option>
+                        <option>Arun Kumar</option>
+                      </select>
+                    </div>
+                    <p class="small text-justify mb-0" style="line-height: 1.6;">
+                      <!-- உள்ளிடப்பட்ட தகவல்கள் அந்த குடும்ப உறுப்பினரால் சரிபார்க்கப்பட்டு,
                         துல்லியமானவை என உறுதிப்படுத்தப்பட்டுள்ளன. -->
-                    என்பவரிடம் இருந்து பெற்றுக் கொண்டேன். அவை அவரால் சரிபார்க்கப்பட்டு
-                    சரியானவை என உறுதிப்படுத்தப்பட்டன.
-                  </p>
-                </label>
+                      என்பவரிடம் இருந்து பெற்றுக் கொண்டேன். அவை அவரால் சரிபார்க்கப்பட்டு
+                      சரியானவை என உறுதிப்படுத்தப்பட்டன.
+                    </p>
+                  </label>
+                </div>
               </div>
-            </div>
-            <div class="d-flex justify-content-between mt-4">
-              <button class="btn btn-secondary default-padding font-14 cus-btns py-1" onclick="nextTab(3)"><i
-                  class="bi bi-arrow-left-circle me-1"></i> Previous</button>
-              <!-- <button class="btn btn-success default-padding font-14 cus-btns py-1">Finish <i class="bi bi-check-circle ms-1"></i></button> -->
-              <!-- <button class="btn btn-success default-padding font-14 cus-btns py-1" id="finishBtn"> 
+              <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-secondary default-padding font-14 cus-btns py-1" onclick="nextTab(3)"><i
+                    class="bi bi-arrow-left-circle me-1"></i> Previous</button>
+                <!-- <button class="btn btn-success default-padding font-14 cus-btns py-1">Finish <i class="bi bi-check-circle ms-1"></i></button> -->
+                <!-- <button class="btn btn-success default-padding font-14 cus-btns py-1" id="finishBtn"> 
                   Finish <i class="bi bi-check-circle ms-1"></i>
                   </button>  -->
-              <button class="btn btn-success default-padding font-14 cus-btns py-1" id="finishBtn">
-                Finish <i class="bi bi-check-circle ms-1"></i>
-              </button>
+                <button class="btn btn-success default-padding font-14 cus-btns py-1" id="finishBtn">
+                  Finish <i class="bi bi-check-circle ms-1"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   </main>
   <footer class="footer mt-auto text-center">
     <div class="container-fluid p-0">
@@ -3086,8 +2988,51 @@
       });
     });
   </script>
-  <!-- ✅ Script -->
   <script>
+    $(document).ready(function () {
+      // Dropdown options
+      const familyOptions = [
+        "வீட்டுமனை / வீடு",
+        "கல்வி மற்றும் திறன் மேம்பாடு",
+        "மருத்துவம், சுகாதாரம் மற்றும் ஊட்டச்சத்து",
+        "விவசாயம்",
+        "வேலை வாய்ப்பு மற்றும் வாழ்வாதாரம்",
+        "சமூக நலம் மற்றும் சமூக பாதுகாப்பு",
+        "சமூக உள்ளாக்கம்",
+        "இதர தேவைகள்"
+      ];
+
+      const projectNumberOptions = [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05"
+      ];
+
+      // Helper to create dropdown
+      function createDropdown(options, labelText) {
+        let html = `
+        <div class="mb-2">
+          <label class="form-label small text-muted">${labelText}</label>
+          <select class="form-select form-select-sm" aria-label="Default select example">
+            <option value="" selected disabled>தேர்வு செய்யவும்</option>`;
+        options.forEach(opt => {
+          html += `<option value="${opt}">${opt}</option>`;
+        });
+        html += `</select></div>`;
+        return html;
+      }
+
+      // Render the two dropdowns by default
+      const fieldsDiv = $('.plan-fields');
+      fieldsDiv.empty();
+      fieldsDiv.append(createDropdown(familyOptions, "திட்டத்தின் வகை"));
+      fieldsDiv.append(createDropdown(projectNumberOptions, "திட்டம்"));
+    });
+  </script>
+  <!-- ✅ Script -->
+  <!-- <script>
     $(document).ready(function () {
       let planCount = 1; // because 1 plan already exists
       const maxPlans = 3;
@@ -3286,7 +3231,7 @@
           }
 
           // Replace inputs with dropdowns here 👇
-          fieldsDiv.append(createDropdown(departmentOptions, "துறை"));
+          // fieldsDiv.append(createDropdown(departmentOptions, "துறை"));
           fieldsDiv.append(createDropdown(projectNumberOptions, "திட்டம்"));
         });
 
@@ -3307,7 +3252,7 @@
       // Add new plan button
       $('#addPlanBtn').on('click', addNewPlan);
     });
-  </script>
+  </script> -->
   <!-- <script>
       $(document).ready(function () {
         let planCount = 0;
@@ -4329,7 +4274,92 @@
       });
     });
   </script>
+  <script>
+    $(document).ready(function () {
+      let planCount = 1; // One plan already exists
+      const maxPlans = 3;
 
+      // 🔹 Option data
+      const familyOptions = [
+        "வீட்டுமனை / வீடு",
+        "கல்வி மற்றும் திறன் மேம்பாடு",
+        "மருத்துவம், சுகாதாரம் மற்றும் ஊட்டச்சத்து",
+        "விவசாயம்",
+        "வேலை வாய்ப்பு மற்றும் வாழ்வாதாரம்",
+        "சமூக நலம் மற்றும் சமூக பாதுகாப்பு",
+        "சமூக உள்ளாக்கம்",
+        "இதர தேவைகள்"
+      ];
+
+      const projectNumberOptions = ["01", "02", "03", "04", "05"];
+
+      // 🔹 Helper: Create dropdown
+      function createDropdown(options, labelText) {
+        let html = `
+        <div class="mb-2">
+          <label class="form-label small text-muted">${labelText}</label>
+          <select class="form-select form-select-sm" aria-label="Default select example">
+            <option value="" selected disabled>தேர்வு செய்யவும்</option>`;
+        options.forEach(opt => {
+          html += `<option value="${opt}">${opt}</option>`;
+        });
+        html += `</select></div>`;
+        return html;
+      }
+
+      // 🔹 Add dropdowns inside a plan
+      function populatePlanFields(planElement) {
+        const fieldsDiv = planElement.find('.plan-fields');
+        fieldsDiv.empty();
+        fieldsDiv.append(createDropdown(familyOptions, "திட்டத்தின் வகை"));
+        fieldsDiv.append(createDropdown(projectNumberOptions, "திட்டம்"));
+      }
+
+      // 🔹 Attach remove event
+      function attachPlanEvents(planElement) {
+        planElement.find('.remove-plan').on('click', function () {
+          planElement.fadeOut(300, function () {
+            $(this).remove();
+            planCount--;
+            updatePlanNumbers();
+            if (planCount < maxPlans) $('#addPlanBtn').fadeIn(300);
+          });
+        });
+      }
+
+      // 🔹 Update plan numbers dynamically
+      function updatePlanNumbers() {
+        $('#plansContainer .plan-entry').each(function (index) {
+          $(this).find('.plan-number').text(index + 1);
+        });
+      }
+
+      // 🔹 Add new plan
+      function addNewPlan() {
+        if (planCount >= maxPlans) return;
+
+        planCount++;
+        const planTemplate = $($('#planTemplate').html());
+        planTemplate.find('.plan-number').text(planCount);
+
+        populatePlanFields(planTemplate);
+        attachPlanEvents(planTemplate);
+
+        $('#plansContainer').append(planTemplate.hide().fadeIn(400));
+
+        if (planCount >= maxPlans) {
+          $('#addPlanBtn').fadeOut(300);
+        }
+      }
+
+      // Initialize first plan
+      populatePlanFields($('.plan-entry'));
+      attachPlanEvents($('.plan-entry'));
+
+      // Add More button click
+      $('#addPlanBtn').on('click', addNewPlan);
+    });
+  </script>
 
 
 </body>
