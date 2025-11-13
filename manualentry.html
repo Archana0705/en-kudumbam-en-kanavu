@@ -1300,13 +1300,13 @@
             <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button"
               role="tab">2. Schemes Availed</button>
           </li>
-          <!-- <li class="nav-item mb-2">
+          <li class="nav-item mb-2">
             <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button"
-              role="tab">3. Eligible Schemes</button>
-          </li> -->
+              role="tab">3. Essential Schemes</button>
+          </li>
           <li class="nav-item mb-2 mx-2">
             <button class="nav-link" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button"
-              role="tab">3. குடும்ப கனவு 2030</button>
+              role="tab">4. குடும்ப கனவு 2030</button>
           </li>
         </ul>
         <div class="tab-content" id="surveyTabsContent">
@@ -1621,9 +1621,8 @@
 
             <div class="card border-0 shadow-sm p-3 rounded-3 my-2">
               <p class="txt-blue mb-1 font14">
-                <i class="bi bi-lightbulb-fill me-2"></i> 3. அரசு நலத்திட்டங்களை மேம்படுத்த தங்களின்
-                ஆலோசனைகள் (ஏதேனும்
-                இரண்டு திட்டங்கள்)
+                <i class="bi bi-lightbulb-fill me-2"></i> 3. தாங்கள் / தங்கள் குடும்பத்தினர் பயன்பெற்ற முக்கியமான மூன்று
+                திட்டங்களை குறிப்பிடுக.
               </p>
               <div id="suggestionSection">
                 <!-- Suggestion 1 -->
@@ -1675,72 +1674,38 @@
           </div>
           <!-- 🟨 TAB 3: Eligible Schemes -->
           <div class="tab-pane fade" id="tab3" role="tabpanel">
-            <p class="txt-blue mb-1 font15"><i class="bi bi-gift-fill me-1"></i>Probable Eligible Schemes
+            <p class="txt-blue mb-1 font15"><i class="bi bi-gift-fill me-1"></i>Essential Schemes
               for the Family
             </p>
-            <!-- Scheme 1 -->
-            <div class="scheme-card mb-2 p-2 border rounded-3">
-              <p class="fw-semibold mb-1 titleColor font15">
-                Kalaignar Magalir Urimai Thittam <br>
-                <span class="text-secondary small">Beneficiary: Lakshmi Devi</span>
+            <div class="card border-0 shadow-sm p-3 rounded-3 my-2">
+              <p class="txt-blue mb-1 font14">
+                <i class="bi bi-lightbulb-fill me-2"></i> 1. தங்களது குடும்பத்தின் மேம்பாட்டுக்கு 2030-ஆம் ஆண்டிற்குள்
+                அரசு செய்ய வேண்டிய முதன்மையான மூன்று தேவைகளைக் குறிப்பிடவும்?
               </p>
-              <div class="d-flex gap-3 mb-1">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="elig1" id="elig1Yes" value="yes">
-                  <label class="form-check-label status-label" for="elig1Yes">✅ ஆம்</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="elig1" id="elig1No" value="no">
-                  <label class="form-check-label status-label" for="elig1No">❌ இல்லை</label>
+              <div id="suggestionSection2">
+                <!-- Suggestion 1 -->
+                <div class="suggestion-entry2 mb-3 p-2 border rounded-3 fade-in">
+                  <div class="row g-2">
+                    <div class="col-md-4">
+                      <label class="form-label small font14">திட்டத்தின் பெயர்</label>
+                      <div class="position-relative scheme-typeahead2">
+                        <input type="text" class="form-control form-control-sm scheme-input2"
+                          placeholder="திட்டத்தின் பெயரைத் தேடவும் (Search by Scheme)">
+                        <ul class="dropdown-menu scheme-dropdown2"></ul>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
               </div>
-            </div>
-            <!-- Scheme 2 -->
-            <div class="scheme-card mb-2 p-2 border rounded-3">
-              <p class="fw-semibold mb-1 titleColor font15">
-                e-Pattā (Digital Land Record Scheme) <br>
-                <span class="text-secondary small">Beneficiary: Ramesh Kumar</span>
-              </p>
-              <div class="d-flex gap-3 mb-1">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="elig2" id="elig2Yes" value="yes">
-                  <label class="form-check-label status-label" for="elig2Yes">✅ ஆம்</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="elig2" id="elig2No" value="no">
-                  <label class="form-check-label status-label" for="elig2No">❌ இல்லை</label>
-                </div>
+              <!-- Add Another -->
+              <div class="text-end">
+                <button id="addSuggestion2" class="btn btn-outline-primary btn-sm rounded-pill mt-2">
+                  <i class="bi bi-plus-circle me-1"></i> மேலும் ஒரு ஆலோசனை சேர்க்கவும்
+                </button>
               </div>
             </div>
-            <!-- Scheme 3 -->
-            <div class="scheme-card mb-2 p-2 border rounded-3">
-              <p class="fw-semibold mb-1 titleColor font15">
-                Central Scheme – Post-Matric Scholarship (ST) <br>
-                <span class="text-secondary small">Beneficiary: Arun Kumar</span>
-              </p>
-              <div class="d-flex gap-3 mb-1">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="elig3" id="elig3Yes" value="yes">
-                  <label class="form-check-label status-label" for="elig3Yes">✅ ஆம்</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="elig3" id="elig3No" value="no">
-                  <label class="form-check-label status-label" for="elig3No">❌ இல்லை</label>
-                </div>
-              </div>
-            </div>
-            <div class="alert alert-info py-2 px-3 small mt-3" role="alert">
-              <i class="bi bi-info-circle-fill me-1"></i>
-              <!-- மேலே கொடுக்கப்பட்டுள்ள திட்டங்களில் இருந்து தங்களுக்குப் பொருத்தமான 2 சிறந்த திட்டங்களைத் தேர்வு
-                  செய்யவும். -->
-              <!-- மேலே தேர்வு செய்யப்பட்ட திட்டங்கள் தற்காலிகமாக தகுதியானவை. தாங்கள் அந்த திட்டத்திற்கான முறையான துறையிடம்
-                  சரிபார்த்து உறுதி செய்து கொள்ளவும். -->
-              <!-- மேலே கொடுக்கப்பட்டுள்ள திட்டங்கள் தற்காலிகமாக தகுதியானவை. அந்த திட்டத்திற்கான தகுதி
-              குறித்து
-              சம்பந்தப்பட்ட துறையிடம் உறுதி செய்து கொள்ளவும். -->
-              மேலே கொடுக்கப்பட்டுள்ள திட்டங்களில் தங்களின் தகுதி குறித்து சம்பந்தப்பட்ட துறையிடம் உறுதி செய்து
-              கொள்ளவும்.
-            </div>
+
             <div class="d-flex justify-content-between mt-4">
               <button class="btn btn-secondary default-padding font-14 cus-btns py-1" onclick="nextTab(2)"><i
                   class="bi bi-arrow-left-circle me-1"></i> Previous</button>
@@ -2495,7 +2460,7 @@
       // Add new suggestion entry (max 2)
       $('#addSuggestion').click(function () {
         const count = $('#suggestionSection .suggestion-entry').length;
-        if (count < 2) {
+        if (count < 3) {
           const newEntry = $('#suggestionSection .suggestion-entry:first').clone();
 
           // 🧹 Reset all field values
@@ -2510,9 +2475,22 @@
           $('#suggestionSection').append(newEntry.hide().fadeIn(400));
 
           // Hide button when 2 entries reached
-          if (count + 1 === 2) {
+          if (count + 1 === 3) {
             $('#addSuggestion').fadeOut(300);
           }
+        }
+      });
+
+      $('#addSuggestion2').click(function () {
+        const count = $('#suggestionSection2 .suggestion-entry2').length;
+        if (count < 3) {
+          const newEntry = $('#suggestionSection2 .suggestion-entry2:first').clone();
+          newEntry.find('input.scheme-input2').val('');
+          newEntry.find('textarea').val('');
+          newEntry.find('.scheme-suggestions2').empty().addClass('d-none');
+          newEntry.find('.scheme-typeahead2').removeAttr('data-initialized');
+          $('#suggestionSection2').append(newEntry.hide().fadeIn(400));
+          if (count + 1 === 3) $('#addSuggestion2').fadeOut(300);
         }
       });
     });
@@ -3315,6 +3293,54 @@
         $('#suggestionSection').append($clone.hide().fadeIn(300));
       });
     });
+  </script>
+  <script>
+    $(document).ready(function () {
+      const schemes = [
+        "வீட்டுமனைப் பட்டா",
+        "வீட்டு வசதி (கலைஞர் கனவு இல்லம் / நகர்ப்புற வாழ்விட வீடு வழங்கும் திட்டம்)",
+        "சமூக பாதுகாப்புத் திட்டங்கள் - கலைஞர் மகளிர் உரிமைத் தொகை / முதியோர் உதவித் தொகை / விதவை உதவித் தொகை போன்றவை",
+        "வாழ்வாதாரக் கடனுதவி",
+        "கல்வி உதவித் திட்டங்கள்",
+        "மருத்துவ உதவிகள்",
+        "மாற்றுத்திறனாளிகளுக்கான திட்டங்கள்",
+        "விவசாயக் கடன் / உபகரணங்கள்",
+        "வாகனக்கடன்"
+      ];
+
+      // Populate dropdown on focus / input
+      $(document).on('focus input', '.scheme-input2', function () {
+        const dropdown = $(this).siblings('.scheme-dropdown2');
+        const val = $(this).val().toLowerCase();
+        dropdown.empty();
+
+        schemes.forEach(function (scheme) {
+          if (scheme.toLowerCase().includes(val)) {
+            dropdown.append('<li class="dropdown-item">' + scheme + '</li>');
+          }
+        });
+
+        if (dropdown.children().length) {
+          dropdown.addClass('show').css({ display: 'block' });
+        } else {
+          dropdown.removeClass('show').css({ display: 'none' });
+        }
+      });
+
+      // Set input value when clicking on a dropdown item
+      $(document).on('click', '.scheme-dropdown2 li', function () {
+        $(this).closest('.position-relative').find('.scheme-input2').val($(this).text());
+        $(this).parent().removeClass('show').css({ display: 'none' });
+      });
+
+      // Hide dropdown if clicked outside
+      $(document).click(function (e) {
+        if (!$(e.target).closest('.scheme-typeahead2').length) {
+          $('.scheme-dropdown2').removeClass('show').css({ display: 'none' });
+        }
+      });
+    });
+
   </script>
   <script>
     (function () {
