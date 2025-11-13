@@ -20,7 +20,31 @@
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <!-- <link rel="stylesheet" href="assets/scripts/toastr/toastr.min.css"> -->
   <title id="application_title">மாநில குடும்பத் தரவு - சரிபார்த்தல் மற்றும் உறுதிப்படுத்துதல் - Tamil Nadu</title>
+<style>
+  .scheme-typeahead2 .dropdown-menu {
+  width: 100% !important;      /* Match parent input width */
+  max-width: 100%;             /* Prevent overflow outside container */
+  white-space: nowrap;         /* Prevent line breaks */
+  overflow: hidden;            /* Hide overflow text */
+  text-overflow: ellipsis;     /* Show ... for long text */
 
+  max-height: 200px;           /* Set max height */
+  overflow-y: auto;            /* Enable vertical scroll if content exceeds max height */
+}
+
+/* Optional: show full text on hover */
+.scheme-typeahead2 .dropdown-item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scheme-typeahead2 .dropdown-item:hover {
+  overflow: visible;           /* Allow full text tooltip on hover */
+  background-color: #f8f9fa;   /* Optional hover styling */
+}
+
+  </style>
   <style>
     .f600 {
       font-weight: 600 !important;
